@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -13,16 +13,29 @@
 </div>
 
 <nav>
-  <h1>📚 Escritores IFRN</h1>
+  <h1>Jovens escritores IFRN</h1>
+
   <ul>
     <li><a href="menu.html">Início</a></li>
-    <li><a href="catalago.html">Catálogo</a></li>
+    <li><a href="catalogo.html">Catálogo</a></li>
     <li><a href="autores.html">Autores</a></li>
-    <li><a href="">Sobre</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
   </ul>
-  <ul>
-    <li class="btn"><a href="login.html">Login</a></li>
-  </ul>
+
+  <!-- BOTÃO DE LOGIN -->
+  <button class="btn" onclick="irParaLogin()">Login</button>
 </nav>
+
+<div class="main">
+  <h2>Bem-vindo ao site dos escritores do IFRN</h2>
+  <p>“Jovens escritores ifrn” nasceu do amor pela leitura e da vontade de dar visibilidade a autores do ifrn e suas histórias incríveis</p>
+</div>
+
+<script>
+  function irParaLogin() {
+    window.location.href = "login.html";
+  }
+</script>
+
 </body>
 </html>
