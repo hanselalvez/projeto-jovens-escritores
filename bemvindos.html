@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bem-vindo</title>
+  <link rel="stylesheet" href="login.css"> <!-- Você pode usar o mesmo CSS -->
+</head>
+
+<body>
+
+  <div class="rainbow-bar"></div>
+
+  <div class="login-container">
+    <h2 id="tituloBemVindo">Bem-vindo!</h2>
+    <p>Você gostaria de apresentar suas histórias para os alunos, apenas ler ou os dois?</p>
+
+    <div style="display:flex; flex-direction:column; gap:15px; margin-top:25px;">
+      <button onclick="escolher('apresentar')">Apresentar histórias</button>
+      <button onclick="escolher('ler')">Apenas ler</button>
+      <button onclick="escolher('ambos')">Os dois</button>
+    </div>
+  </div>
+
+  <script>
+    window.onload = function () {
+      const nome = localStorage.getItem("nomeUsuario") || "Visitante";
+      const pseudo = localStorage.getItem("pseudonimoUsuario");
+
+      const titulo = document.getElementById("tituloBemVindo");
+
+      if (pseudo && pseudo.trim() !== "") {
+        titulo.textContent = `Bem-vindo(a), ${pseudo}!`;
+      } else {
+        titulo.textContent = `Bem-vindo(a), ${nome}!`;
+      }
+    }
+
+    function escolher(opcao) {
+      alert("Você escolheu: " + opcao);
+      // Aqui você pode redirecionar para outra página depois
+    }
+  </script>
+
+</body>
+</html>
