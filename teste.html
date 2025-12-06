@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo e Livros</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #0a0a0a;
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav {
+    display: flex;
+    gap: 10px;
+    background: #111;
+    padding: 15px;
+    border-bottom: 2px solid #333;
+  }
+
+  nav button {
+    padding: 10px 18px;
+    background: #222;
+    border: 1px solid #555;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.3s;
+  }
+
+  nav button:hover {
+    background: #444;
+  }
+
+  .page {
+    display: none;
+    padding: 20px;
+  }
+
+  .active {
+    display: block;
+  }
+
+  .catalog-item {
+    background: #111;
+    border: 1px solid #444;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+  }
+
+  h1, h2 {
+    color: #ff4d6d;
+  }
+
+  a {
+    color: #ff8fb7;
+  }
+</style>
+
+<script>
+// Função para trocar de página
+function openPage(pageName) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById(pageName).classList.add("active");
+}
+</script>
+
+</head>
+<body>
+
+<nav>
+  <button onclick="openPage('catalogo')">Catálogo</button>
+  <button onclick="openPage('livro1')">Livro 1</button>
+  <button onclick="openPage('livro2')">Livro 2</button>
+  <button onclick="openPage('livro3')">Livro 3</button>
+</nav>
+
+<!-- ========================== -->
+<!--       CATÁLOGO             -->
+<!-- ========================== -->
+
+<div id="catalogo" class="page active">
+  <h1>Catálogo de Livros</h1>
+
+  <div class="catalog-item">
+    <h2>📕 A Rosa Carmesim</h2>
+    <p><b>Autor:</b> Murylo</p>
+    <p><b>Gênero:</b> Terror psicológico dramático</p>
+    <p><b>Descrição:</b> Uma história sobre culpa, obsessão e um amor doentio que floresce em terreno morto.</p>
+    <p><a href="#" onclick="openPage('livro1')">→ Acessar Livro 1</a></p>
+  </div>
+
+  <div class="catalog-item">
+    <h2>📘 Marés de Um Coração Partido</h2>
+    <p><b>Autor:</b>DLultra</p>
+    <p><b>Gênero:</b> Romance melancólico</p>
+    <p><b>Descrição:</b> As ondas carregam memórias e trazem de volta aquilo que deveria ter afundado para sempre.</p>
+    <p><a href="#" onclick="openPage('livro2')">→ Acessar Livro 2</a></p>
+  </div>
+
+  <div class="catalog-item">
+    <h2>📙 O Teatro das Marionetes Vazias</h2>
+    <p><b>Autor:</b>Hansel Alvez</p>
+    <p><b>Gênero:</b> Fantasia sombria teatral</p>
+    <p><b>Descrição:</b> Uma obra sobre a dança eterna entre caos, criação e decadência.</p>
+    <p><a href="#" onclick="openPage('livro3')">→ Acessar Livro 3</a></p>
+  </div>
+</div>
+
+<!-- ========================== -->
+<!--       LIVRO 1              -->
+<!-- ========================== -->
+
+<div id="livro1" class="page">
+  <h1>A Rosa Carmesim</h1>
+  <h3>Autor: Pluma Sombria</h3>
+  <p>
+    (Coloque aqui o texto completo do Livro 1…)  
+    Você pode escrever o conteúdo inteiro nesta área, ele pode ter qualquer tamanho.
+  </p>
+</div>
+
+<!-- ========================== -->
+<!--       LIVRO 2              -->
+<!-- ========================== -->
+
+<div id="livro2" class="page">
+  <h1>Marés de Um Coração Partido</h1>
+  <h3>Autor: Sussurro Oceânico</h3>
+  <p>
+    (Coloque aqui o texto completo do Livro 2…)  
+  </p>
+</div>
+
+<!-- ========================== -->
+<!--       LIVRO 3              -->
+<!-- ========================== -->
+
+<div id="livro3" class="page">
+  <h1>O Teatro das Marionetes Vazias</h1>
+  <h3>Autor: Dono da Casa das Lamentações</h3>
+  <p>
+    (Coloque aqui o texto completo do Livro 3…)  
+  </p>
+</div>
+
+</body>
+</html>
