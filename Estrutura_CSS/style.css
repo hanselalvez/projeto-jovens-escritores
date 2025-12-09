@@ -1,41 +1,250 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Início </title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+/* ------------------------------------ */
+/* FONTE BASE                           */
+/* ------------------------------------ */
 
-<div class="rainbow-bar">
-  <div></div><div></div><div></div><div></div><div></div><div></div>
-</div>
+/* Lembre de importar no HTML:
+<link href="https://fonts.googleapis.com/css2?family=Gagalin&display=swap" rel="stylesheet">
+*/
 
-<nav>
-  <h1>Jovens escritores IFRN</h1>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Gagalin', cursive;
+}
 
-  <ul>
-    <li><a href="menu.html">Início</a></li>
-    <li><a href="catalogo.html">Catálogo</a></li>
-    <li><a href="autores.html">Autores</a></li>
-    <li><a href="sobre.html">Sobre</a></li>
-  </ul>
+body {
+  background-color: #0a1a2f; /* azul marinho profundo */
+  position: relative;
+  z-index: 0;
+}
 
-  <!-- BOTÃO DE LOGIN -->
-  <button class="btn" onclick="irParaLogin()">Login</button>
-</nav>
+/* FUNDO EM REPETIÇÃO — LEVIATHAN */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
 
-<div class="main">
-  <h2>Bem-vindo ao site dos escritores do IFRN</h2>
-  <p>Aqui celebramos as histórias criadas pelos alunos e os inspiramos a sempre continuar com sua paixão.</p>
-</div>
+  background-image: url("https://png.pngtree.com/png-clipart/20210526/ourlarge/pngtree-black-style-feathers-write-pen-png-image_3362877.jpg");
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 15px 15px;
 
-<script>
-  function irParaLogin() {
-    window.location.href = "login.html";
-  }
-</script>
+  opacity: 0.05;
+  background-attachment: fixed;
+  mix-blend-mode: overlay;
+}
 
-</body>
-</html>
+/* ------------------------------------ */
+/* MENU SUPERIOR                        */
+/* ------------------------------------ */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e8f0ff; /* azul bem claro */
+  padding: 15px 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+}
+
+nav h1 {
+  color: #001933;
+  font-weight: 700;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+li a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #003366;
+  transition: all 0.5s;
+  position: relative;
+}
+
+/* Linha neon azul água */
+li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(
+    90deg, 
+    #00334d, 
+    #004466, 
+    #005580, 
+    #0077a8, 
+    #66ccff
+  );
+  border-radius: 5px;
+  transition: width 0.3s;
+}
+
+li a:hover::after {
+  width: 100%;
+}
+
+li a:hover {
+  color: #001f33;
+}
+
+/* ------------------------------------ */
+/* BOTÃO DO MENU                        */
+/* ------------------------------------ */
+
+.btn {
+  background: linear-gradient(
+    90deg,
+    #001933,
+    #00264d,
+    #003366,
+    #004080,
+    #2a72b8,
+    #66aee8
+  );
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* ------------------------------------ */
+/* ÁREA DE CONTEÚDO                     */
+/* ------------------------------------ */
+
+.main {
+  text-align: center;
+  padding: 60px 20px;
+  color: #e6f0ff;
+}
+
+/* ------------------------------------ */
+/* FORMULÁRIO DE LOGIN                  */
+/* ------------------------------------ */
+
+.login-container {
+  background-color: #0f2744; /* azul marinho claro */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.login-container h2 {
+  margin-bottom: 10px;
+  color: #c7ddff;
+}
+
+.login-container p {
+  font-size: 0.9em;
+  color: #a6c4e6;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  text-align: left;
+  margin: 10px 0 5px;
+  font-weight: bold;
+  color: #d9e7ff;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #4a688a;
+  background: #dbe7fa;
+  border-radius: 5px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #003a66;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #002b4d;
+}
+
+/* ------------------------------------ */
+/* CATÁLOGO                             */
+/* ------------------------------------ */
+
+.catalogo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 30px 0;
+}
+
+/* CARD DO LIVRO */
+.livro-card {
+  background-color: #111;
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.livro-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.livro-card img {
+  width: 100%;
+  aspect-ratio: 10 / 16;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  display: block;
+}
+
+.livro-card p {
+  font-weight: bold;
+  margin: 10px 0 4px;
+}
+
+.autor-card {
+  font-size: 0.9em;
+  opacity: 0.8;
+  display: block;
+}
+
+.status-card {
+  font-size: 0.85em;
+  opacity: 0.6;
+  margin-top: 2px;
+  display: block;
+}
