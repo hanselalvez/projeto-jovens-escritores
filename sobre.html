@@ -1,3 +1,57 @@
+<style>
+  .about-hero {
+    width:90%;
+    max-width:1100px;
+    margin:24px auto;
+    padding:22px;
+    border-radius:14px;
+    background: linear-gradient(135deg,#00254a 0%, #00509e 60%);
+    color:#fff;
+    box-shadow:0 12px 30px rgba(0,0,0,0.18);
+    position:relative;
+    overflow:hidden;
+  }
+  .about-hero:before{
+    content:"";
+    position:absolute;
+    right:-120px; top:-80px;
+    width:260px; height:260px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.06), rgba(255,255,255,0) 40%);
+    transform:rotate(25deg);
+  }
+  .about-hero h2{ margin:0 0 8px 0; font-size:28px; letter-spacing:0.2px; }
+  .about-hero p{ margin:0; color:rgba(232,246,255,0.95); line-height:1.5; }
+
+  .about-cards{ display:flex; gap:14px; margin-top:16px; flex-wrap:wrap; }
+  .about-card{
+    background: rgba(255,255,255,0.04);
+    padding:16px;
+    border-radius:10px;
+    flex:1;
+    min-width:200px;
+    color:#e8f6ff;
+    transition:transform .18s ease, box-shadow .18s ease;
+    border:1px solid rgba(255,255,255,0.04);
+  }
+  .about-card h4{ margin:0 0 8px 0; font-size:16px; }
+  .about-card p{ margin:0; font-size:14px; color:rgba(232,246,255,0.9); }
+  .about-card:hover{ transform:translateY(-6px); box-shadow:0 12px 30px rgba(0,0,0,0.22); background: rgba(255,255,255,0.06); }
+  .about-card::before{ content:"✦"; display:inline-block; margin-right:8px; color:#8ac926; }
+
+  @media (max-width:700px){
+    .about-cards{ flex-direction:column; }
+    .about-hero{ padding:16px; }
+    .about-hero h2{ font-size:22px; }
+  }
+  /* Modal de detalhes */
+  .modal-overlay{ position:fixed; inset:0; background:rgba(0,0,0,0.6); display:none; align-items:center; justify-content:center; z-index:1200; padding:20px; }
+  .modal-overlay.open{ display:flex; }
+  .modal-panel{ background:#fff; color:#001933; max-width:760px; width:100%; border-radius:12px; box-shadow:0 18px 44px rgba(0,0,0,0.36); padding:20px; position:relative; }
+  .modal-panel h3{ margin:0 0 8px 0; }
+  .modal-panel p{ margin:0 0 10px 0; line-height:1.5; }
+  .modal-close{ position:absolute; right:12px; top:10px; background:transparent; border:0; font-size:20px; cursor:pointer; color:#333; }
+  .about-card{ cursor:pointer; }
+</style>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -15,8 +69,8 @@
 <nav>
   <h1>Jovens escritores IFRN</h1>
   <ul>
-    <li><a href="menu.html">Início</a></li>
-    <li><a href="catalogo.html">Catálogo</a></li>
+    <li><a href="inicio.html">Início</a></li>
+    <li><a href="catalago.html">Catálogo</a></li>
     <li><a href="autores.html">Autores</a></li>
     <li><a href="sobre.html">Sobre</a></li>
   </ul>
@@ -24,14 +78,93 @@
 </nav>
 
 <div class="main">
-  <h2>Sobre nosso site</h2>
-  <p>“Jovens escritores ifrn” nasceu do amor pela leitura e da vontade de dar visibilidade a autores do ifrn e suas histórias incríveis.</p>
+  <div class="about-hero">
+    <h2>Sobre nosso site</h2>
+    <p>“Jovens Escritores IFRN” é um espaço colaborativo criado para divulgar, celebrar e apoiar os escritos produzidos por estudantes e jovens autores do IFRN. Aqui você encontra leituras diversas, perfis de autores e um lugar para publicar e receber feedback.</p>
+
+    <div class="about-cards" aria-hidden="false">
+      <div class="about-card" data-key="mission" tabindex="0">
+        <h4>Missão</h4>
+        <p>Promover a leitura e dar visibilidade a novos talentos, conectando autores e leitores.</p>
+      </div>
+      <div class="about-card" data-key="participar" tabindex="0">
+        <h4>Como participar</h4>
+        <p>Crie uma conta, envie seu texto e publique no catálogo. Também é possível comentar e apoiar outros autores.</p>
+      </div>
+      <div class="about-card" data-key="contato" tabindex="0">
+        <h4>Contato</h4>
+        <p>Para dúvidas e sugestões, fale com a equipe pedagógica do IFRN ou use a seção de contato na página principal.</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
   function irParaLogin() {
     window.location.href = "login.html";
   }
+</script>
+
+<!-- Modal de detalhes (inicialmente escondido) -->
+<div id="detailModal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal-panel" role="document">
+    <button class="modal-close" aria-label="Fechar">×</button>
+    <div class="modal-content">
+      <!-- conteúdo será inserido via JS -->
+    </div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    const details = {
+      mission: {
+        title: 'Missão',
+        body: '<p>Nossa missão é fomentar o prazer pela leitura e apoiar a formação de novos autores. Trabalhamos para criar um ambiente seguro e acolhedor onde jovens possam publicar, experimentar estilos e receber feedback construtivo.</p><p>Valorizamos diversidade de vozes e incentivamos projetos colaborativos entre estudantes e professores.</p>'
+      },
+      participar: {
+        title: 'Como participar',
+        body: '<p>1. Crie sua conta no sistema (clique em Login → Registrar).</p><p>2. Prepare seu texto em um arquivo simples (doc ou txt) e use o formulário de submissão para enviar sua obra.</p><p>3. Após revisão, seu texto pode ser publicado no catálogo. Você também pode comentar e apoiar outros autores.</p>'
+      },
+      contato: {
+        title: 'Contato',
+        body: '<p>Para sugestões, dúvidas ou apoio técnico, escreva para <a href="mailto:contato@jovensescritores.ifrn.edu.br">contato@jovensescritores.ifrn.edu.br</a> ou procure a coordenação pedagógica do seu campus.</p><p>Também aceitamos feedbacks pelo formulário presente na página inicial.</p>'
+      }
+    };
+
+    const modal = document.getElementById('detailModal');
+    const panel = modal.querySelector('.modal-panel');
+    const content = modal.querySelector('.modal-content');
+    const closeBtn = modal.querySelector('.modal-close');
+
+    function openModal(key){
+      const info = details[key];
+      if(!info) return;
+      content.innerHTML = '<h3>'+info.title+'</h3>'+info.body;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+      // focus no botão de fechar para acessibilidade
+      closeBtn.focus();
+      document.addEventListener('keydown', onKey);
+    }
+    function closeModal(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+      content.innerHTML = '';
+      document.removeEventListener('keydown', onKey);
+    }
+    function onKey(e){ if(e.key === 'Escape'){ closeModal(); } }
+
+    // abrir ao clicar nas cartas
+    document.querySelectorAll('.about-card').forEach(card=>{
+      card.addEventListener('click', ()=> openModal(card.dataset.key));
+      card.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(card.dataset.key); } });
+    });
+
+    // fechar botao e clicar no overlay
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+  })();
 </script>
 
 </body>

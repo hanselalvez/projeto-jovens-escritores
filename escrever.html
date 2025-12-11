@@ -3,29 +3,214 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enviar História</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Gagalin&display=swap" rel="stylesheet">
+  <title>Enviar Livro</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .write-container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: linear-gradient(135deg, #f8fbff 0%, #f0f8ff 100%);
+      padding: 40px 36px;
+      border-radius: 12px;
+      box-shadow: 0 12px 32px rgba(0, 51, 102, 0.16);
+      border: 1px solid rgba(25, 130, 196, 0.08);
+    }
+    .write-container h2 {
+      color: #001933;
+      font-size: 28px;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .write-container .subtitle {
+      text-align: center;
+      color: #6a7a8a;
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: #1f3a52;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 2px solid #d4e4f0;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      color: #1a1a1a;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #1982c4;
+      box-shadow: 0 0 0 3px rgba(25, 130, 196, 0.08);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+      font-size: 13px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #001f33, #1982c4);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 51, 102, 0.2);
+      margin-top: 8px;
+    }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 51, 102, 0.3);
+    }
+    .success-msg {
+      display: none;
+      background: #d4edda;
+      color: #155724;
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+      text-align: center;
+      font-size: 14px;
+      border: 1px solid #c3e6cb;
+    }
+    .file-info {
+      font-size: 12px;
+      color: #6a7a8a;
+      margin-top: 4px;
+    }
+    @media (max-width: 600px) {
+      .write-container { padding: 28px 20px; margin: 20px 16px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-  <div class="login-container">
-    <h2>Envie sua História</h2>
+<div class="rainbow-bar">
+  <div></div><div></div><div></div><div></div><div></div><div></div>
+</div>
 
-    <form>
-      <label>Título da História</label>
-      <input type="text" required placeholder="Digite o título">
+<nav>
+  <h1>📚 Escritores IFRN</h1>
+  <ul>
+    <li><a href="inicio.html">Início</a></li>
+    <li><a href="catalago.html">Catálogo</a></li>
+    <li><a href="autores.html">Autores</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+  </ul>
+  <ul>
+    <li class="btn"><a href="login.html">Login</a></li>
+  </ul>
+</nav>
 
-      <label>Capa da História</label>
-      <input type="file" accept="image/*" required>
+<div class="write-container">
+  <h2>✍️ Envie seu Livro</h2>
+  <p class="subtitle">Compartilhe sua história com a comunidade de jovens autores do IFRN</p>
+  
+  <div class="success-msg" id="successMsg">✓ Livro enviado com sucesso! Obrigado por participar.</div>
 
-      <label>Arquivo PDF</label>
-      <input type="file" accept="application/pdf" required>
+  <form id="submitForm" onsubmit="handleSubmit(event)">
+    <div class="form-group">
+      <label for="titulo">Título do Livro *</label>
+      <input id="titulo" type="text" placeholder="Digite o título da sua obra" required />
+    </div>
 
-      <button>Enviar</button>
-    </form>
-  </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="autor">Seu Nome (Autor) *</label>
+        <input id="autor" type="text" placeholder="Seu nome completo" required />
+      </div>
+      <div class="form-group">
+        <label for="genero">Gênero *</label>
+        <select id="genero" required>
+          <option value="">Selecione um gênero</option>
+          <option value="fantasia">Fantasia</option>
+          <option value="aventura">Aventura</option>
+          <option value="drama">Drama</option>
+          <option value="poesia">Poesia</option>
+          <option value="contos">Contos</option>
+          <option value="infanto-juvenil">Infanto-juvenil</option>
+          <option value="cronica">Crônica</option>
+          <option value="outro">Outro</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="sinopse">Sinopse *</label>
+      <textarea id="sinopse" placeholder="Escreva uma breve sinopse do seu livro (até 500 caracteres)" maxlength="500" required></textarea>
+      <span style="font-size:12px; color:#999;">Máximo 500 caracteres</span>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="capa">Capa do Livro *</label>
+        <input id="capa" type="file" accept="image/*" required />
+        <div class="file-info">Formatos aceitos: JPG, PNG (máx. 5MB)</div>
+      </div>
+      <div class="form-group">
+        <label for="pdf">Arquivo do Livro (PDF) *</label>
+        <input id="pdf" type="file" accept="application/pdf" required />
+        <div class="file-info">Máximo 50MB</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">E-mail de Contato *</label>
+      <input id="email" type="email" placeholder="seu.email@exemplo.com" required />
+    </div>
+
+    <button type="submit" class="submit-btn">📤 Enviar Livro</button>
+    <p style="text-align:center; font-size:12px; color:#999; margin-top:12px;">Após envio, sua obra será revisada pela equipe pedagógica.</p>
+  </form>
+</div>
+
+<script>
+  function handleSubmit(event) {
+    event.preventDefault();
+    
+    const titulo = document.getElementById('titulo').value;
+    const autor = document.getElementById('autor').value;
+    const genero = document.getElementById('genero').value;
+    
+    // Simular envio (em produção, usar um backend real)
+    console.log('Livro enviado:', { titulo, autor, genero });
+    
+    // Mostrar mensagem de sucesso
+    const form = document.getElementById('submitForm');
+    const successMsg = document.getElementById('successMsg');
+    
+    form.style.display = 'none';
+    successMsg.style.display = 'block';
+    
+    // Opcionalmente, redirecionar após 3 segundos
+    setTimeout(() => {
+      window.location.href = 'inicio.html';
+    }, 3000);
+  }
+</script>
 
 </body>
 </html>
