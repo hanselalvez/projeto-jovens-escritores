@@ -15,8 +15,8 @@
 <nav>
   <h1>Jovens escritores IFRN</h1>
   <ul>
-    <li><a href="inicio.html">Início</a></li>
-    <li><a href="catalago.html">Catálogo</a></li>
+    <li><a href="menu.html">Início</a></li>
+    <li><a href="catalogo.html">Catálogo</a></li>
     <li><a href="autores.html">Autores</a></li>
     <li><a href="sobre.html">Sobre</a></li>
   </ul>
@@ -27,30 +27,51 @@
   <h2>Nosso Catálogo</h2>
   <p>Explore uma coleção de livros incríveis que nossos alunos fizeram.</p>
 
-  <div class="catalogo-grid">
+<div class="catalogo-grid">
 
-  <a href="livro1.html" class="livro-card">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTglMBDW70eBhm63Kuk6qyVoqMs8muQkixtxg&s" alt="Capa">
-    <p>Lonely Cat</p>
-  </a>
+<!-- LIVRO 1 -->
+<a href="livro1.html" class="livro-card"
+   data-titulo="O Gatinho Solitário"
+   data-capa="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFSXflDyHPEwKYjMPqcvm5d85z8UeeP2V-Tw&s"
+   data-autor="L. Aurora"
+   onclick="salvarLivro(this)">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFSXflDyHPEwKYjMPqcvm5d85z8UeeP2V-Tw&s">
+  <p>O Gatinho Solitário</p>
+  <span class="autor-card">por L. Aurora</span>
+  <span class="status-card">capítulos: 6</span>
+</a>
 
-  <a href="livro2.html" class="livro-card">
-    <img src="imagens/livro2.jpg" alt="Livro 2">
-    <p>Título do Livro 2</p>
-  </a>
+<!-- LIVRO 2 -->
+<a href="erro.html" class="livro-card"
+   data-titulo="Jardim Pálido das Horas"
+   data-capa="https://uploads.spiritfanfiction.com/historias/capas/201802/jardim-sem-cor-11978335-060220180744.jpg"
+   data-autor="Theo M. Noctis"
+   onclick="salvarLivro(this)">
+  <img src="https://uploads.spiritfanfiction.com/historias/capas/201802/jardim-sem-cor-11978335-060220180744.jpg">
+  <p>Jardim Incolor</p>
+  <span class="autor-card">por Theo M. Noctis</span>
+  <span class="status-card">capítulos: 9</span>
+</a>
 
-  <a href="livro3.html" class="livro-card">
-    <img src="imagens/livro3.jpg" alt="Livro 3">
-    <p>Título do Livro 3</p>
-  </a>
-
-</div>
-
-<script>
-  function irParaLogin() {
-    window.location.href = "login.html";
-  }
-</script>
-
-</body>
-</html>
+<!-- LIVRO 3 -->
+<a href="erro.html" class="livro-card"
+   data-titulo="A Marionete que Sussurra ao Relógio"
+   data-capa="https://i.pinimg.com/736x/2b/86/1a/2b861af17296101241bf373e934f32f5.jpg"
+   data-autor="C. Seren"
+   onclick="salvarLivro(this)">
+  <img src="https://i.pinimg.com/736x/2b/86/1a/2b861af17296101241bf373e934f32f5.jpg">
+  <p>A Marionete que Sussurra ao Relógio</p>
+  <span class="autor-card">por C. Seren</span>
+  <span class="status-card">capítulos: 2</span>
+</a>
+<!-- LIVRO 4 -->
+<a href="livro4.html" class="livro-card"
+   data-titulo="Cartas Nunca Enviadas"
+   data-capa="https://png.pngtree.com/background/20230831/original/pngtree-torn-letters-written-pieces-discard-photo-picture-image_4899012.jpg"
+   data-autor="L. Aurora"
+   onclick="salvarLivro(this)">
+  <img src="https://png.pngtree.com/background/20230831/original/pngtree-torn-letters-written-pieces-discard-photo-picture-image_4899012.jpg">
+  <p>Cartas Nunca Enviadas</p>
+  <span class="autor-card">por L.Aurora</span>
+  <span class="status-card">capítulos: 5</span>
+</a>
