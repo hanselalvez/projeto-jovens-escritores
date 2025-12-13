@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Página não encontrada</title>
+  <link href="https://fonts.googleapis.com/css2?family=Gagalin&display=swap" rel="stylesheet">
+  <style>
+/* ------------------------------------ */
+/* FONTE BASE                           */
+/* ------------------------------------ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Gagalin', cursive;
+}
+
+body {
+  background-color: #0a1a2f; /* azul marinho profundo */
+  position: relative;
+  z-index: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+/* FUNDO EM REPETIÇÃO — LEVIATHAN */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image: url("https://png.pngtree.com/png-clipart/20210526/ourlarge/pngtree-black-style-feathers-write-pen-png-image_3362877.jpg");
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 15px 15px;
+
+  opacity: 0.05;
+  background-attachment: fixed;
+  mix-blend-mode: overlay;
+}
+
+/* ------------------------------------ */
+/* MENU SUPERIOR (minimal para 404)    */
+/* ------------------------------------ */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e8f0ff; /* azul bem claro */
+  padding: 12px 22px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+  border-radius: 10px;
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  right: 18px;
+}
+
+nav h1 {
+  color: #001933;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+ul { display:none; }
+
+/* ------------------------------------ */
+/* BOTÃO DO MENU                        */
+/* ------------------------------------ */
+
+.btn {
+  background: linear-gradient(
+    90deg,
+    #001933,
+    #00264d,
+    #003366,
+    #004080,
+    #2a72b8,
+    #66aee8
+  );
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn:hover { transform: scale(1.05); }
+
+/* ------------------------------------ */
+/* ÁREA DE CONTEÚDO                     */
+/* ------------------------------------ */
+
+.error-wrapper {
+  width: 100%;
+  max-width: 1000px;
+  text-align: center;
+  color: #e6f0ff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(15,39,68,0.88), rgba(8,18,34,0.88));
+  padding: 36px;
+  border-radius: 14px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+
+.error-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-card {
+  background: rgba(255,255,255,0.03);
+  padding: 22px;
+  border-radius: 12px;
+  width: 100%;
+}
+
+.error-code {
+  font-size: 6.5rem;
+  line-height: 1;
+  color: #cfe9ff;
+  text-shadow: 0 6px 30px rgba(0,0,0,0.7);
+}
+
+.error-graphic {
+  max-width: 260px;
+  filter: drop-shadow(0 12px 30px rgba(0,0,0,0.6));
+}
+
+/* Imagem circular central */
+.error-center-img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 20px auto 0;
+  display: block;
+  box-shadow: inset 0 0 0 6px rgba(255,255,255,0.04),
+              0 12px 35px rgba(0,0,0,0.6);
+}
+
+/* Mensagem e ações */
+.error-text {
+  text-align: left;
+}
+
+.error-title {
+  font-size: 2.2rem;
+  margin-bottom: 6px;
+  color: #eaf6ff;
+}
+
+.error-subtitle {
+  font-size: 1rem;
+  color: #bcd7f1;
+  margin-bottom: 18px;
+}
+
+.error-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.back-btn {
+  background: #e8f0ff;
+  color: #001933;
+  padding: 12px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 800;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+.home-btn {
+  padding: 12px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  color: #e6f0ff;
+  border: 1px solid rgba(255,255,255,0.06);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.small-note {
+  display: block;
+  margin-top: 12px;
+  color: #99b4d6;
+  font-size: 0.9rem;
+}
+
+/* Responsivo */
+@media (max-width: 880px) {
+  .error-wrapper { grid-template-columns: 1fr; padding: 22px; }
+  .error-code { font-size: 4.8rem; }
+  nav { left: 12px; right: 12px; }
+}
+
+  </style>
+</head>
+<body>
+
+  <main class="error-wrapper" role="main">
+
+    <div class="error-visual">
+      <div class="error-card">
+        <div class="error-code">404</div>
+
+        <!-- IMAGEM NO CENTRO -->
+        <img class="error-center-img" src="https://preview.redd.it/is-the-pout-face-cute-funny-to-yall-or-not-v0-3yrxfscfq15g1.jpg?width=577&format=pjpg&auto=webp&s=3a46090b7c780da5001ad320f9c007b353a6809b" alt="Buraco vazio" />
+
+      </div>
+    </div>
+
+    <div class="error-text">
+      <h2 class="error-title">Ops — Página não encontrada</h2>
+      <p class="error-subtitle">A página que você tentou acessar não existe ou foi removida. Talvez o link esteja errado.</p>
+
+      <div class="error-actions">
+        <a class="back-btn" href="javascript:history.back()">← Voltar</a>
+        <a class="home-btn" href="menu.html">Ir para a página inicial</a>
+      </div>
+
+      <span class="small-note">Se você acha que isso é um erro, entre em contato com o suporte.</span>
+    </div>
+
+  </main>
+
+</body>
+</html>
