@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="tituloPagina">Carregando...</title>
+<link rel="stylesheet" href="livro.css">
+</head>
+<body>
+
+<nav>
+  <h1>Leitura</h1>
+  <ul>
+    <li><a href="menu.html">Início</a></li>
+    <li><a href="catalogo.html">Catálogo</a></li>
+    <li><a href="autores.html">Autores</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+  </ul>
+</nav>
+
+<div class="pagina-livro">
+
+  <h2 id="tituloLivro">Carregando...</h2>
+
+  <h4 id="autorLivro">
+    por <a id="autor-card" href="autoraurora.html"></a>
+  </h4>
+
+  <p class="status">Status: Em andamento — 5 capítulos lançados</p>
+
+  <div class="capa-livro">
+    <img id="capaLivro" src="" alt="Capa do livro">
+  </div>
+
+  <div class="generos">
+    <h3>Gêneros</h3>
+    <ul>
+      <li>Drama</li>
+      <li>Romance</li>
+      <li>Poesia</li>
+    </ul>
+  </div>
+
+  <div class="sinopse">
+    <h3>Sinopse</h3>
+    <p>
+      Em meio a papéis amarelados e palavras nunca ditas, alguém escreve cartas destinadas a ninguém — 
+      ou talvez a alguém que nunca voltou.  
+      Cada carta guarda sentimentos interrompidos, despedidas inacabadas e amores que aprenderam a sobreviver no silêncio.
+    </p>
+  </div>
+
+  <div class="indice">
+    <h3>Índice</h3>
+    <ul>
+      <li><a href="#cap1">1. A Primeira Carta Rasgada</a></li>
+      <li><a href="#cap2">2. Endereços Que Não Existem Mais</a></li>
+      <li><a href="#cap3">3. Letras Escritas à Noite</a></li>
+      <li><a href="#cap4">4. O Envelope Sem Nome</a></li>
+      <li><a href="#cap5">5. Palavras Que Nunca Foram Lidas</a></li>
+    </ul>
+  </div>
+
+  <div class="conteudo-livro">
+
+    <h3 id="cap1">Capítulo 1 — A Primeira Carta Rasgada</h3>
+    <p>
+      A caneta tremia entre os dedos.  
+      As palavras surgiam com facilidade, mas o medo as rasgava antes que ganhassem destino.  
+      Era mais seguro escrever do que falar — e mais doloroso guardar tudo em silêncio.
+    </p>
+
+    <h3 id="cap2">Capítulo 2 — Endereços Que Não Existem Mais</h3>
+    <p>
+      Os endereços eram lembranças, não lugares.  
+      Casas demolidas pelo tempo, ruas alteradas pela ausência.  
+      Cada carta era enviada para um passado impossível de alcançar.
+    </p>
+
+    <h3 id="cap3">Capítulo 3 — Letras Escritas à Noite</h3>
+    <p>
+      A madrugada era cúmplice.  
+      À luz fraca do abajur, sentimentos escapavam sem censura.  
+      Ali, ninguém julgava — apenas escutava o som do papel sendo preenchido.
+    </p>
+
+    <h3 id="cap4">Capítulo 4 — O Envelope Sem Nome</h3>
+    <p>
+      Um envelope branco repousava sobre a mesa.  
+      Não havia nome, nem selo, nem destino.  
+      Ainda assim, ele parecia mais pesado que todos os outros.
+    </p>
+
+    <h3 id="cap5">Capítulo 5 — Palavras Que Nunca Foram Lidas</h3>
+    <p>
+      As cartas foram guardadas em uma caixa antiga.  
+      Talvez ninguém jamais as leia.  
+      Mas escrever foi suficiente para provar que aqueles sentimentos existiram —  
+      e isso, por si só, já era um tipo de libertação.
+    </p>
+
+  </div>
+
+</div>
+
+<script>
+const titulo = "Cartas Nunca Enviadas";
+const capa = "https://png.pngtree.com/background/20230831/original/pngtree-torn-letters-written-pieces-discard-photo-picture-image_4899012.jpg";
+const autor = "L. Aurora";
+
+document.getElementById("tituloLivro").textContent = titulo;
+document.getElementById("tituloPagina").textContent = titulo;
+document.getElementById("capaLivro").src = capa;
+
+document.getElementById("autor-card").textContent = autor;
+document.getElementById("autor-card").href = "autoraurora.html";
+</script>
+
+</body>
+</html>
