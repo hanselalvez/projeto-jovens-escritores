@@ -1,41 +1,260 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Início </title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escritores do ifrn</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Container principal */
+    .featured {
+      width: 90%;
+      max-width: 1100px;
+      margin: 28px auto;
+      background: #e8f0ff;
+      padding: 18px;
+      border-radius: 12px;
+      color: #001933;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .featured:focus-within {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    }
+
+    /* Cabeçalho com botão à direita */
+    .featured-header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .featured-title { font-size:20px; font-weight:700; margin:0; }
+
+    /* Grid responsivo */
+    .featured-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:14px; }
+
+    /* Card do livro */
+    .book-card {
+      background:white;
+      padding:12px;
+      border-radius:10px;
+      text-align:left;
+      box-shadow:0 4px 12px rgba(0,0,0,0.06);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+      overflow: hidden;
+    }
+    .book-link:focus .book-card,
+    .book-card:focus,
+    .book-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+      filter: saturate(1.03);
+    }
+    .book-card img { width:100%; height:160px; object-fit:cover; border-radius:8px; display:block; }
+    .book-card h4 { margin:10px 0 6px 0; color:#001933; font-size:16px; }
+    .book-card p { margin:0; color:#003366; font-size:13px; }
+
+    /* Hover no link do card - mantém acessibilidade */
+    .book-link { text-decoration:none; color:inherit; display:block; }
+    .book-link:focus { outline: 3px solid rgba(25,130,196,0.15); border-radius:10px; }
+
+    /* Botão Ver mais */
+    .view-more { margin-left:12px; }
+    .view-more.btn { padding: 8px 14px; border-radius: 20px; }
+    .view-more.btn:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0,0,0,0.12); }
+
+    /* Responsividade */
+    @media (max-width:900px){ .featured-grid{ grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:600px){ .featured-grid{ grid-template-columns:1fr; } .featured{padding:14px;} }
+    /* Hero */
+    .hero { background: linear-gradient(90deg,#001933,#003366); color: #e8f0ff; padding: 28px 0; }
+    .hero-inner { width:90%; max-width:1100px; margin:0 auto; display:flex; gap:24px; align-items:center; justify-content:space-between; }
+    .hero-title { font-size:28px; margin:0 0 8px 0; }
+    .hero-sub { margin:0 0 14px 0; color:#cfe6ff; }
+    .hero-search { display:flex; gap:8px; }
+    .hero-search input { padding:10px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.06); color:#fff; min-width:260px; }
+    .hero-search input::placeholder{ color: rgba(255,255,255,0.7); }
+    .hero-visual .hero-card { background: rgba(255,255,255,0.06); padding:12px; border-radius:10px; color:#e8f0ff; box-shadow:0 8px 24px rgba(0,0,0,0.2); }
+
+    /* Categories */
+    .cat-card { background:#e8f0ff; color:#001933; padding:10px 14px; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.06); cursor:pointer; user-select:none; }
+    .cat-card.active { background:#8ac926; color:#fff; box-shadow:0 8px 18px rgba(0,0,0,0.12); transform:translateY(-3px); }
+
+    /* Novidades cards reuse book-card styles */
+    .novidades .book-card { padding:12px; border-radius:8px; }
+
+    @media (max-width:900px){ .hero-inner{flex-direction:column;align-items:flex-start;} .hero-visual{order:2} }
+  </style>
 </head>
 <body>
 
-<div class="rainbow-bar">
+  <div class="rainbow-bar">
   <div></div><div></div><div></div><div></div><div></div><div></div>
-</div>
+  </div>
 
 <nav>
   <h1>Jovens escritores IFRN</h1>
-
   <ul>
-    <li><a href="inicio.html">Início</a></li>
-    <li><a href="catalago.html">Catálogo</a></li>
+    <li><a href="menu.html">Início</a></li>
+    <li><a href="catalogo.html">Catálogo</a></li>
     <li><a href="autores.html">Autores</a></li>
     <li><a href="sobre.html">Sobre</a></li>
   </ul>
-
-  <!-- BOTÃO DE LOGIN -->
-  <button class="btn" onclick="irParaLogin()">Login</button>
+   <button class="btn" onclick="irParaLogin()">Login</button>
 </nav>
 
-<div class="main">
-  <h2>Bem-vindo ao site dos escritores do IFRN</h2>
-  <p>Aqui celebramos as histórias criadas pelos alunos e os inspiramos a sempre continuar com sua paixão.</p>
-</div>
 
-<script>
-  function irParaLogin() {
-    window.location.href = "login.html";
-  }
-</script>
+  <!-- Hero / Banner -->
+  <header class="hero" role="banner" aria-label="Banner principal">
+    <div class="hero-inner">
+      <div>
+        <h1 class="hero-title">Leia. Inspire-se. Participe.</h1>
+        <p class="hero-sub">Espaço para jovens autores do IFRN — descubra livros, autores e eventos.</p>
+        <div class="hero-search">
+          <input id="searchInput" type="search" placeholder="Busque por título, autor ou gênero" aria-label="Busca" />
+          <button id="searchBtn" class="btn">Pesquisar</button>
+        </div>
+        <a href="escrever.html" class="btn" style="margin-top:16px; display:inline-block; background:linear-gradient(135deg,#8ac926,#a8d946); box-shadow:0 6px 16px rgba(138,201,38,0.3);">✍️ Envie seu livro</a>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-card">
+          <div class="hero-card-label">Destaque</div>
+          <h3>O Gatinho solitário</h3>
+          <p>Uma jornada fantástica que emociona leitores jovens.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="featured" aria-label="Destaques do dia">
+    <div class="featured-header">
+      <h3 class="featured-title">Destaques do dia</h3>
+      <div style="display:flex;align-items:center;">
+        <a href="catalago.html" class="btn view-more">Ver mais</a>
+      </div>
+    </div>
+
+    <div class="featured-grid">
+      <a href="livro1.html" class="book-link" style="text-decoration:none; color:inherit; display:block;">
+        <article class="book-card" data-genre="Fantasia,Drama" aria-label="O gatinho solitário ver livro">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFSXflDyHPEwKYjMPqcvm5d85z8UeeP2V-Tw&s" alt="Capa Lonely Cat">
+          <h4>O Gatinho Solitário</h4>
+          <p>Uma aventura fantástica sobre amizade e descoberta.</p>
+        </article>
+      </a>
+
+      <article class="book-card" data-genre="Fantasia,Aventura">
+        <img src="capa-exemplo.jpg" alt="Capa Exemplo">
+        <h4>O Bosque das Palavras</h4>
+        <p>Contos que misturam fantasia e emoção para jovens leitores.</p>
+      </article>
+
+      <article class="book-card" data-genre="Drama">
+        <img src="capa-exemplo.jpg" alt="Capa Exemplo">
+        <h4>Entre Estrelas</h4>
+        <p>Uma jornada dramática e emocionante pela imaginação.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Categorias -->
+  <section class="categories" style="width:90%;max-width:1100px;margin:18px auto;">
+    <h3 style="margin:0 0 12px 0;color:#001933;">Categorias</h3>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <div class="cat-card">Fantasia</div>
+      <div class="cat-card">Aventura</div>
+      <div class="cat-card">Drama</div>
+      <div class="cat-card">Poesia</div>
+      <div class="cat-card">Infanto-juvenil</div>
+      <div class="cat-card">Crônicas</div>
+    </div>
+  </section>
+
+  <!-- Novidades -->
+  <section class="novidades" style="width:90%;max-width:1100px;margin:18px auto 40px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <h3 style="margin:0;color:#ffffff;">Novidades</h3>
+      <a href="catalago.html" class="btn view-more">Ver mais</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px;">
+      <div class="book-card"> <h4 style="margin:8px 0 4px 0;">Novo: O Vento</h4><p style="font-size:13px;color:#003366;">Romance juvenil</p></div>
+      <div class="book-card"> <h4 style="margin:8px 0 4px 0;">Curta Noites</h4><p style="font-size:13px;color:#003366;">Contos contemporâneos</p></div>
+      <div class="book-card"> <h4 style="margin:8px 0 4px 0;">Caminho das Estrelas</h4><p style="font-size:13px;color:#003366;">Fantasia épica</p></div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer style="background:#001933;color:#e8f0ff;padding:18px 0;margin-top:20px;">
+    <div style="width:90%;max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <div>
+        <strong>Jovens Escritores IFRN</strong>
+        <div style="font-size:13px;color:#cfe6ff;margin-top:6px;">Plataforma de leitura e escrita colaborativa.</div>
+      </div>
+      <div style="font-size:13px;color:#cfe6ff;">&copy; 2025 IFRN • <a href="sobre.html" style="color:#cfe6ff;text-decoration:underline;">Sobre</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const chips = document.querySelectorAll('.cat-card');
+      const cards = document.querySelectorAll('.book-card');
+      const selected = new Set();
+      function norm(s){ return String(s||'').toLowerCase(); }
+      function update(){
+        if(selected.size === 0){
+          cards.forEach(c=>c.style.display='');
+          return;
+        }
+        const cats = Array.from(selected).map(norm);
+        cards.forEach(card=>{
+          const genres = norm(card.dataset.genre || card.textContent);
+          const matched = cats.some(cat => genres.includes(cat));
+          card.style.display = matched ? '' : 'none';
+        });
+      }
+      chips.forEach(chip=>{
+        chip.addEventListener('click', ()=>{
+          const cat = chip.textContent.trim();
+          if(selected.has(cat)){
+            selected.delete(cat);
+            chip.classList.remove('active');
+          } else {
+            selected.add(cat);
+            chip.classList.add('active');
+          }
+          update();
+        });
+        chip.addEventListener('keydown', (e)=>{
+          if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); chip.click(); }
+        });
+        chip.setAttribute('tabindex','0');
+        chip.setAttribute('role','button');
+      });
+        // --- Search handler: redireciona 'lonely cat' para livro1.html ---
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        function handleSearch(){
+          if(!searchInput) return;
+          const q = String(searchInput.value || '').trim();
+          const nq = q.toLowerCase();
+          if(nq.length === 0){
+            window.location.href = 'catalago.html';
+            return;
+          }
+          // aceita variações como 'lonely cat', 'lonelycat', ' lonely cat '
+          if(nq.includes('lonely cat') || nq.replace(/\s+/g,'') === 'lonelycat'){
+            window.location.href = 'livro1.html';
+            return;
+          }
+          // navega ao catálogo com query para pesquisas genéricas
+          window.location.href = 'catalago.html?q=' + encodeURIComponent(q);
+        }
+        if(searchBtn){ searchBtn.addEventListener('click', handleSearch); }
+        if(searchInput){ searchInput.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); handleSearch(); } }); }
+    })();
+  </script>
 
 </body>
 </html>
