@@ -98,7 +98,7 @@
     <h1>📚 Escritores IFRN</h1>
     <ul>
       <li><a href="inicio.html">Início</a></li>
-      <li><a href="catalago.html">Catálogo</a></li>
+      <li><a href="catalogo.html">Catálogo</a></li>
       <li><a href="autores.html">Autores</a></li>
       <li><a href="sobre.html">Sobre</a></li>
     </ul>
@@ -133,11 +133,17 @@
     <div class="featured-header">
       <h3 class="featured-title">Destaques do dia</h3>
       <div style="display:flex;align-items:center;">
-        <a href="catalago.html" class="btn view-more">Ver mais</a>
+        <a href="catalogo.html" class="btn view-more">Ver mais</a>
       </div>
     </div>
 
     <div class="featured-grid">
+      <article class="book-card" data-genre="Fantasia,Aventura">
+        <img src="capa-exemplo.jpg" alt="Capa Exemplo">
+        <h4>O Bosque das Palavras</h4>
+        <p>Contos que misturam fantasia e emoção para jovens leitores.</p>
+      </article>
+
       <a href="livro1.html" class="book-link" style="text-decoration:none; color:inherit; display:block;">
         <article class="book-card" data-genre="Fantasia,Drama" aria-label="Lonely Cat - ver livro">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTglMBDW70eBhm63Kuk6qyVoqMs8muQkixtxg&s" alt="Capa Lonely Cat">
@@ -145,12 +151,6 @@
           <p>Uma aventura fantástica sobre amizade e descoberta.</p>
         </article>
       </a>
-
-      <article class="book-card" data-genre="Fantasia,Aventura">
-        <img src="capa-exemplo.jpg" alt="Capa Exemplo">
-        <h4>O Bosque das Palavras</h4>
-        <p>Contos que misturam fantasia e emoção para jovens leitores.</p>
-      </article>
 
       <article class="book-card" data-genre="Drama">
         <img src="capa-exemplo.jpg" alt="Capa Exemplo">
@@ -177,7 +177,7 @@
   <section class="novidades" style="width:90%;max-width:1100px;margin:18px auto 40px;">
     <div style="display:flex;align-items:center;justify-content:space-between;">
       <h3 style="margin:0;color:#ffffff;">Novidades</h3>
-      <a href="catalago.html" class="btn view-more">Ver mais</a>
+      <a href="catalogo.html" class="btn view-more">Ver mais</a>
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px;">
       <div class="book-card"> <h4 style="margin:8px 0 4px 0;">Novo: O Vento</h4><p style="font-size:13px;color:#003366;">Romance juvenil</p></div>
@@ -241,7 +241,7 @@
           const q = String(searchInput.value || '').trim();
           const nq = q.toLowerCase();
           if(nq.length === 0){
-            window.location.href = 'catalago.html';
+            window.location.href = 'catalogo.html';
             return;
           }
           // aceita variações como 'lonely cat', 'lonelycat', ' lonely cat '
@@ -250,7 +250,7 @@
             return;
           }
           // navega ao catálogo com query para pesquisas genéricas
-          window.location.href = 'catalago.html?q=' + encodeURIComponent(q);
+          window.location.href = 'catalogo.html?q=' + encodeURIComponent(q);
         }
         if(searchBtn){ searchBtn.addEventListener('click', handleSearch); }
         if(searchInput){ searchInput.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); handleSearch(); } }); }
