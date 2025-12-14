@@ -5,88 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Escritores do ifrn</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Container principal */
-    .featured {
-      width: 90%;
-      max-width: 1100px;
-      margin: 28px auto;
-      background: #e8f0ff;
-      padding: 18px;
-      border-radius: 12px;
-      color: #001933;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-    }
-    .featured:focus-within {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-    }
-
-    /* Cabeçalho com botão à direita */
-    .featured-header {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-    }
-    .featured-title { font-size:20px; font-weight:700; margin:0; }
-
-    /* Grid responsivo */
-    .featured-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:14px; }
-
-    /* Card do livro */
-    .book-card {
-      background:white;
-      padding:12px;
-      border-radius:10px;
-      text-align:left;
-      box-shadow:0 4px 12px rgba(0,0,0,0.06);
-      transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
-      overflow: hidden;
-    }
-    .book-link:focus .book-card,
-    .book-card:focus,
-    .book-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-      filter: saturate(1.03);
-    }
-    .book-card img { width:100%; height:160px; object-fit:cover; border-radius:8px; display:block; }
-    .book-card h4 { margin:10px 0 6px 0; color:#001933; font-size:16px; }
-    .book-card p { margin:0; color:#003366; font-size:13px; }
-
-    /* Hover no link do card - mantém acessibilidade */
-    .book-link { text-decoration:none; color:inherit; display:block; }
-    .book-link:focus { outline: 3px solid rgba(25,130,196,0.15); border-radius:10px; }
-
-    /* Botão Ver mais */
-    .view-more { margin-left:12px; }
-    .view-more.btn { padding: 8px 14px; border-radius: 20px; }
-    .view-more.btn:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0,0,0,0.12); }
-
-    /* Responsividade */
-    @media (max-width:900px){ .featured-grid{ grid-template-columns:repeat(2,1fr); } }
-    @media (max-width:600px){ .featured-grid{ grid-template-columns:1fr; } .featured{padding:14px;} }
-    /* Hero */
-    .hero { background: linear-gradient(90deg,#001933,#003366); color: #e8f0ff; padding: 28px 0; }
-    .hero-inner { width:90%; max-width:1100px; margin:0 auto; display:flex; gap:24px; align-items:center; justify-content:space-between; }
-    .hero-title { font-size:28px; margin:0 0 8px 0; }
-    .hero-sub { margin:0 0 14px 0; color:#cfe6ff; }
-    .hero-search { display:flex; gap:8px; }
-    .hero-search input { padding:10px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.06); color:#fff; min-width:260px; }
-    .hero-search input::placeholder{ color: rgba(255,255,255,0.7); }
-    .hero-visual .hero-card { background: rgba(255,255,255,0.06); padding:12px; border-radius:10px; color:#e8f0ff; box-shadow:0 8px 24px rgba(0,0,0,0.2); }
-
-    /* Categories */
-    .cat-card { background:#e8f0ff; color:#001933; padding:10px 14px; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.06); cursor:pointer; user-select:none; }
-    .cat-card.active { background:#8ac926; color:#fff; box-shadow:0 8px 18px rgba(0,0,0,0.12); transform:translateY(-3px); }
-
-    /* Novidades cards reuse book-card styles */
-    .novidades .book-card { padding:12px; border-radius:8px; }
-
-    @media (max-width:900px){ .hero-inner{flex-direction:column;align-items:flex-start;} .hero-visual{order:2} }
-  </style>
 </head>
 <body>
 
@@ -116,7 +34,7 @@
           <input id="searchInput" type="search" placeholder="Busque por título, autor ou gênero" aria-label="Busca" />
           <button id="searchBtn" class="btn">Pesquisar</button>
         </div>
-        <a href="escrever.html" class="btn" style="margin-top:16px; display:inline-block; background:linear-gradient(135deg,#8ac926,#a8d946); box-shadow:0 6px 16px rgba(138,201,38,0.3);">✍️ Envie seu livro</a>
+        <a href="escrever.html" class="btn btn-enviar">✍️ Envie seu livro</a>
       </div>
       <div class="hero-visual" aria-hidden="true">
         <div class="hero-card">
@@ -131,7 +49,7 @@
   <section class="featured" aria-label="Destaques do dia">
     <div class="featured-header">
       <h3 class="featured-title">Destaques do dia</h3>
-      <div style="display:flex;align-items:center;">
+      <div class="flex-center">
         <a href="catalogo.html" class="btn view-more">Ver mais</a>
       </div>
     </div>
@@ -143,7 +61,7 @@
         <p>Contos que misturam fantasia e emoção para jovens leitores.</p>
       </article>
 
-      <a href="livro1.html" class="book-link" style="text-decoration:none; color:inherit; display:block;">
+      <a href="livro1.html" class="book-link">
         <article class="book-card" data-genre="Fantasia,Drama" aria-label="O gatinho solitário ver livro">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFSXflDyHPEwKYjMPqcvm5d85z8UeeP2V-Tw&s" alt="Capa Lonely Cat">
           <h4>O Gatinho Solitário</h4>
@@ -160,9 +78,9 @@
   </section>
 
   <!-- Categorias -->
-  <section class="categories" style="width:90%;max-width:1100px;margin:18px auto;">
-    <h3 style="margin:0 0 12px 0;color:#001933;">Categorias</h3>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+  <section class="categories">
+    <h3>Categorias</h3>
+    <div class="flex-wrap">
       <div class="cat-card">Fantasia</div>
       <div class="cat-card">Aventura</div>
       <div class="cat-card">Drama</div>
@@ -173,26 +91,26 @@
   </section>
 
   <!-- Novidades -->
-  <section class="novidades" style="width:90%;max-width:1100px;margin:18px auto 40px;">
-    <div style="display:flex;align-items:center;justify-content:space-between;">
-      <h3 style="margin:0;color:#ffffff;">Novidades</h3>
+  <section class="novidades">
+    <div class="flex-between">
+      <h3>Novidades</h3>
       <a href="catalogo.html" class="btn view-more">Ver mais</a>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px;">
-      <div class="book-card"> <h4 style="margin:8px 0 4px 0;">Novo: O Vento</h4><p style="font-size:13px;color:#003366;">Romance juvenil</p></div>
-      <div class="book-card"> <h4 style="margin:8px 0 4px 0;">Curta Noites</h4><p style="font-size:13px;color:#003366;">Contos contemporâneos</p></div>
-      <div class="book-card"> <h4 style="margin:8px 0 4px 0;">Caminho das Estrelas</h4><p style="font-size:13px;color:#003366;">Fantasia épica</p></div>
+    <div class="novidades-grid">
+      <div class="book-card"> <h4>Novo: O Vento</h4><p>Romance juvenil</p></div>
+      <div class="book-card"> <h4>Curta Noites</h4><p>Contos contemporâneos</p></div>
+      <div class="book-card"> <h4>Caminho das Estrelas</h4><p>Fantasia épica</p></div>
     </div>
   </section>
 
   <!-- Rodapé -->
-  <footer style="background:#001933;color:#e8f0ff;padding:18px 0;margin-top:20px;">
-    <div style="width:90%;max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+  <footer>
+    <div class="footer-content">
       <div>
         <strong>Jovens Escritores IFRN</strong>
-        <div style="font-size:13px;color:#cfe6ff;margin-top:6px;">Plataforma de leitura e escrita colaborativa.</div>
+        <p>Plataforma de leitura e escrita colaborativa.</p>
       </div>
-      <div style="font-size:13px;color:#cfe6ff;">&copy; 2025 IFRN • <a href="sobre.html" style="color:#cfe6ff;text-decoration:underline;">Sobre</a></div>
+      <div class="footer-copy">&copy; 2025 IFRN • <a href="sobre.html">Sobre</a></div>
     </div>
   </footer>
 
