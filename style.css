@@ -926,3 +926,30 @@ footer a {
     grid-template-columns: 1fr;
   }
 }
+
+.music-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+
+  padding: 12px 18px;
+
+  border: none;
+  border-radius: 25px;
+
+  background: #001933;
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 15px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  transition: 0.3s;
+}
+
+.music-button:hover {
+  transform: scale(1.05);
+}
