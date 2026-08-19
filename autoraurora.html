@@ -1,189 +1,540 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>L. Aurora — Autor</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+<!DOCTYPE html> 
+<html lang="pt-br"> 
 
-<div class="rainbow-bar">
-  <div></div><div></div><div></div><div></div><div></div><div></div>
-</div>
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>L. Aurora — Autor</title> 
+<link rel="stylesheet" href="style.css"> 
+</head> 
 
-<nav>
-  <h1>Jovens escritores IFRN</h1>
-  <ul>
-    <li><a href="menu.html">Início</a></li>
-    <li><a href="catalogo.html">Catálogo</a></li>
-    <li><a href="autores.html">Autores</a></li>
-    <li><a href="sobre.html">Sobre</a></li>
-  </ul>
-  <button class="btn" onclick="location.href='login.html'">Login</button>
-</nav>
+<body> 
 
-<div class="main">
-  <div class="author-profile">
-    <div class="author-profile-content">
-      <!-- Foto de perfil -->
-      <div class="profile-avatar" onclick="openProfileModal()">
-        <img src="https://cdn.rafled.com/anime-icons/images/xgawu4wXqxbKCszwoN0HDn9T4qEkQBkJ.jpg" alt="Foto de L. Aurora">
-      </div>
-      <div>
-        <h2>L. Aurora</h2>
-        <div class="bio">
-          Oi! Eu sou a Ana Laura, mas no mundo das histórias e da leitura me chamam de L. Aurora.
-          Tenho 17 anos, sou apaixonada por livros, tecnologia e tudo que envolve informática .
-          Aqui compartilho minhas aventuras literárias, resenhas e muita energia positiva! 
-          Vem se perder nas páginas comigo e descobrir novos mundos! 
-        </div>
-      </div>
-    </div>
-    <div class="author-actions">
-      <button id="followBtn" class="btn btn-action" onclick="toggleFollow()">➕ Seguir</button>
-      <button id="likeBtn" class="btn btn-action" onclick="toggleLike()">❤️ Like</button>
-    </div>
-  </div>
+<!-- =========================
+     MÚSICA DO YOUTUBE
+     ========================= -->
 
-  <!-- Estatísticas -->
-  <div class="stats-container">
-    <div class="stat-box">
-      <div class="stat-number" id="followersCount">543</div>
-      <div class="stat-label">Seguidores</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-number">2</div>
-      <div class="stat-label">Publicações</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-number" id="likesCount">342</div>
-      <div class="stat-label">Likes</div>
-    </div>
-  </div>
+<div id="youtubePlayer"></div>
 
-  <!-- Tabs -->
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab(event, 'publications')">Publicações</button>
-    <button class="tab-btn" onclick="switchTab(event, 'comments')">Comentários</button>
-  </div>
+<button id="musicButton" class="music-button" onclick="toggleMusic()">
+  🎵 Música
+</button>
 
-  <!-- Publicações -->
-  <div id="publications" class="tab-content active">
-    <!-- Livro 1 -->
-    <div class="publication">
-      <h4>O Gatinho Solitário</h4>
-      <p><strong>Ano:</strong> 2024</p>
-      <p><strong>Sinopse:</strong> Em um reino esquecido entre névoas e montanhas, um jovem gato parte em uma jornada épica para descobrir seu verdadeiro propósito. Enfrentando criaturas místicas, amizades inesperadas e escolhas que moldarão seu destino, ele descobre que a solidão pode ser o caminho para encontrar a verdadeira conexão.</p>
-      <p><strong>Gênero:</strong> Fantasia, Aventura, Drama</p>
-      <a href="livro1.html" class="btn btn-link">Ver livro</a>
-    </div>
-    <!-- Livro 2 -->
-    <div class="publication">
-      <h4>Cartas Nunca Enviadas</h4>
-      <p><strong>Ano:</strong> 2024</p>
-      <p><strong>Sinopse:</strong> Em meio a papéis amarelados e palavras nunca ditas, alguém escreve cartas destinadas a ninguém — ou talvez a alguém que nunca voltou. Cada carta guarda sentimentos interrompidos, despedidas inacabadas e amores que aprenderam a sobreviver no silêncio.</p>
-      <p><strong>Gênero:</strong> Drama, Romance, Poesia</p>
-      <a href="livro4.html" class="btn btn-link">Ver livro</a>
-    </div>
-  </div>
 
-  <!-- Comentários -->
-  <div id="comments" class="tab-content">
-    <div class="comment-form">
-      <textarea id="commentInput" placeholder="Deixe seu comentário..." rows="4"></textarea>
-      <button class="btn" onclick="addComment()">Enviar comentário</button>
-    </div>
-    <div id="commentsContainer"></div>
-  </div>
+<div class="rainbow-bar"> 
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div> 
+</div> 
 
-  <a href="autores.html" class="btn btn-back">Voltar aos autores</a>
-</div>
 
-<!-- Modal de perfil -->
-<div id="profileModal" class="modal-profile">
-  <div class="modal-profile-content">
-    <button class="close-modal" onclick="closeProfileModal()">×</button>
-    <img src="https://cdn.rafled.com/anime-icons/images/xgawu4wXqxbKCszwoN0HDn9T4qEkQBkJ.jpg" alt="Foto de L. Aurora">
-  </div>
-</div>
+<nav> 
+  <h1>Jovens escritores IFRN</h1> 
 
-<script>
-  function switchTab(event, tabName) {
-    const tabs = document.querySelectorAll('.tab-btn');
-    const contents = document.querySelectorAll('.tab-content');
-    tabs.forEach(tab => tab.classList.remove('active'));
-    contents.forEach(content => content.classList.remove('active'));
-    event.target.classList.add('active');
-    document.getElementById(tabName).classList.add('active');
-  }
+  <ul> 
+    <li><a href="menu.html">Início</a></li> 
+    <li><a href="catalogo.html">Catálogo</a></li> 
+    <li><a href="autores.html">Autores</a></li> 
+    <li><a href="sobre.html">Sobre</a></li> 
+  </ul> 
 
-  function addComment() {
-    const input = document.getElementById('commentInput');
-    const text = input.value.trim();
-    if (!text) { alert('Escreva um comentário antes de enviar!'); return; }
-    const container = document.getElementById('commentsContainer');
-    const newComment = document.createElement('div');
-    newComment.className = 'comment';
-    newComment.innerHTML = `
-      <div class="comment-author">Usuário Anônimo</div>
-      <div class="comment-text">"${text}"</div>
-    `;
-    container.insertBefore(newComment, container.firstChild);
-    input.value = '';
-  }
+  <button class="btn" onclick="location.href='login.html'">
+    Login
+  </button> 
+</nav> 
 
-  let isFollowing = false;
-  let isLiked = false;
-  let followers = 543;
-  let likes = 342;
 
-  function toggleFollow() {
-    const btn = document.getElementById('followBtn');
-    const followerEl = document.getElementById('followersCount');
-    isFollowing = !isFollowing;
-    if (isFollowing) {
-      followers += 1;
-      btn.textContent = '✓ Seguindo';
-      btn.style.background = 'linear-gradient(90deg, #001933, #003366, #66aee8)';
-      btn.style.color = 'white';
-    } else {
-      followers -= 1;
-      btn.textContent = '➕ Seguir';
-      btn.style.background = '';
-      btn.style.color = '';
+<div class="main"> 
+
+  <div class="author-profile"> 
+
+    <div class="author-profile-content"> 
+
+      <!-- Foto de perfil --> 
+      <div class="profile-avatar" onclick="openProfileModal()"> 
+
+        <img 
+          src="https://cdn.rafled.com/anime-icons/images/xgawu4wXqxbKCszwoN0HDn9T4qEkQBkJ.jpg" 
+          alt="Foto de L. Aurora"
+        > 
+
+      </div> 
+
+
+      <div> 
+
+        <h2>L. Aurora</h2> 
+
+        <div class="bio"> 
+           Oi! Eu sou a Milena Monteiro, mas no mundo das histórias e da leitura me chamam de Miñly. 
+          Tenho 17 anos, sou apaixonada por livros, tecnologia e tudo que envolve informática. 
+          Aqui compartilho minhas aventuras literárias, resenhas e muita energia positiva!  
+          Vem se perder nas páginas comigo e descobrir novos mundos!  
+        </div> 
+
+      </div> 
+
+    </div> 
+
+
+    <div class="author-actions"> 
+
+      <button 
+        id="followBtn" 
+        class="btn btn-action" 
+        onclick="toggleFollow()"
+      >
+        ➕ Seguir
+      </button> 
+
+      <button 
+        id="likeBtn" 
+        class="btn btn-action" 
+        onclick="toggleLike()"
+      >
+        ❤️ Like
+      </button> 
+
+    </div> 
+
+  </div> 
+
+
+  <!-- Estatísticas --> 
+
+  <div class="stats-container"> 
+
+    <div class="stat-box"> 
+      <div class="stat-number" id="followersCount">543</div> 
+      <div class="stat-label">Seguidores</div> 
+    </div> 
+
+    <div class="stat-box"> 
+      <div class="stat-number">2</div> 
+      <div class="stat-label">Publicações</div> 
+    </div> 
+
+    <div class="stat-box"> 
+      <div class="stat-number" id="likesCount">342</div> 
+      <div class="stat-label">Likes</div> 
+    </div> 
+
+  </div> 
+
+
+  <!-- Tabs --> 
+
+  <div class="tabs"> 
+
+    <button 
+      class="tab-btn active" 
+      onclick="switchTab(event, 'publications')"
+    >
+      Publicações
+    </button> 
+
+    <button 
+      class="tab-btn" 
+      onclick="switchTab(event, 'comments')"
+    >
+      Comentários
+    </button> 
+
+  </div> 
+
+
+  <!-- Publicações --> 
+
+  <div id="publications" class="tab-content active"> 
+
+    <!-- Livro 1 --> 
+
+    <div class="publication"> 
+
+      <h4>O Gatinho Solitário</h4> 
+
+      <p>
+        <strong>Ano:</strong> 2024
+      </p> 
+
+      <p>
+        <strong>Sinopse:</strong> 
+        Em um reino esquecido entre névoas e montanhas, um jovem gato parte 
+        em uma jornada épica para descobrir seu verdadeiro propósito. 
+        Enfrentando criaturas místicas, amizades inesperadas e escolhas que 
+        moldarão seu destino, ele descobre que a solidão pode ser o caminho 
+        para encontrar a verdadeira conexão.
+      </p> 
+
+      <p>
+        <strong>Gênero:</strong> Fantasia, Aventura, Drama
+      </p> 
+
+      <a href="livro1.html" class="btn btn-link">
+        Ver livro
+      </a> 
+
+    </div> 
+
+
+    <!-- Livro 2 --> 
+
+    <div class="publication"> 
+
+      <h4>Cartas Nunca Enviadas</h4> 
+
+      <p>
+        <strong>Ano:</strong> 2024
+      </p> 
+
+      <p>
+        <strong>Sinopse:</strong> 
+        Em meio a papéis amarelados e palavras nunca ditas, alguém escreve 
+        cartas destinadas a ninguém — ou talvez a alguém que nunca voltou. 
+        Cada carta guarda sentimentos interrompidos, despedidas inacabadas 
+        e amores que aprenderam a sobreviver no silêncio.
+      </p> 
+
+      <p>
+        <strong>Gênero:</strong> Drama, Romance, Poesia
+      </p> 
+
+      <a href="livro4.html" class="btn btn-link">
+        Ver livro
+      </a> 
+
+    </div> 
+
+  </div> 
+
+
+  <!-- Comentários --> 
+
+  <div id="comments" class="tab-content"> 
+
+    <div class="comment-form"> 
+
+      <textarea 
+        id="commentInput" 
+        placeholder="Deixe seu comentário..." 
+        rows="4"
+      ></textarea> 
+
+      <button class="btn" onclick="addComment()">
+        Enviar comentário
+      </button> 
+
+    </div> 
+
+    <div id="commentsContainer"></div> 
+
+  </div> 
+
+
+  <a href="autores.html" class="btn btn-back">
+    Voltar aos autores
+  </a> 
+
+</div> 
+
+
+<!-- Modal de perfil --> 
+
+<div id="profileModal" class="modal-profile"> 
+
+  <div class="modal-profile-content"> 
+
+    <button 
+      class="close-modal" 
+      onclick="closeProfileModal()"
+    >
+      ×
+    </button> 
+
+    <img 
+      src="https://cdn.rafled.com/anime-icons/images/xgawu4wXqxbKCszwoN0HDn9T4qEkQBkJ.jpg" 
+      alt="Foto de L. Aurora"
+    > 
+
+  </div> 
+
+</div> 
+
+
+<!-- API DO YOUTUBE -->
+
+<script src="https://www.youtube.com/iframe_api"></script>
+
+
+<script> 
+
+/* =========================
+   PLAYER DO YOUTUBE
+   ========================= */
+
+let player;
+
+function onYouTubeIframeAPIReady() {
+
+  player = new YT.Player('youtubePlayer', {
+
+    height: '0',
+    width: '0',
+
+    videoId: 'SP-ePfRU5yo',
+
+    playerVars: {
+      autoplay: 0,
+      loop: 1,
+      playlist: 'SP-ePfRU5yo'
+    },
+
+    events: {
+
+      onReady: function(event) {
+
+        console.log("Música carregada!");
+
+      }
+
     }
-    followerEl.textContent = followers >= 1000 ? (followers / 1000).toFixed(1) + 'K' : followers;
-  }
 
-  function toggleLike() {
-    const btn = document.getElementById('likeBtn');
-    const likesEl = document.getElementById('likesCount');
-    isLiked = !isLiked;
-    if (isLiked) {
-      likes += 1;
-      btn.textContent = '❤️ Curtido';
-      btn.style.background = '#ff595e';
-      btn.style.color = 'white';
-    } else {
-      likes -= 1;
-      btn.textContent = '❤️ Like';
-      btn.style.background = '';
-      btn.style.color = '';
-    }
-    likesEl.textContent = likes >= 1000 ? (likes / 1000).toFixed(1) + 'K' : likes;
-  }
-
-  function openProfileModal() {
-    document.getElementById('profileModal').classList.add('open');
-  }
-  function closeProfileModal() {
-    document.getElementById('profileModal').classList.remove('open');
-  }
-  document.getElementById('profileModal').addEventListener('click', (e) => {
-    if (e.target.id === 'profileModal') closeProfileModal();
   });
-</script>
 
-</body>
+}
+
+
+/* =========================
+   BOTÃO DA MÚSICA
+   ========================= */
+
+function toggleMusic() {
+
+  const button = document.getElementById('musicButton');
+
+  if (!player) {
+    return;
+  }
+
+  const state = player.getPlayerState();
+
+  if (
+    state === YT.PlayerState.PLAYING
+  ) {
+
+    player.pauseVideo();
+
+    button.textContent = "🔇 Música";
+
+  } else {
+
+    player.playVideo();
+
+    button.textContent = "🔊 Música";
+
+  }
+
+}
+
+
+/* =========================
+   TROCA DE ABAS
+   ========================= */
+
+function switchTab(event, tabName) {
+
+  const tabs = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.classList.remove('active');
+  });
+
+  contents.forEach(content => {
+    content.classList.remove('active');
+  });
+
+  event.target.classList.add('active');
+
+  document.getElementById(tabName).classList.add('active');
+
+}
+
+
+/* =========================
+   COMENTÁRIOS
+   ========================= */
+
+function addComment() {
+
+  const input = document.getElementById('commentInput');
+
+  const text = input.value.trim();
+
+  if (!text) {
+
+    alert('Escreva um comentário antes de enviar!');
+
+    return;
+
+  }
+
+  const container = document.getElementById('commentsContainer');
+
+  const newComment = document.createElement('div');
+
+  newComment.className = 'comment';
+
+  newComment.innerHTML = `
+    <div class="comment-author">
+      Usuário Anônimo
+    </div>
+
+    <div class="comment-text">
+      "${text}"
+    </div>
+  `;
+
+  container.insertBefore(
+    newComment,
+    container.firstChild
+  );
+
+  input.value = '';
+
+}
+
+
+/* =========================
+   SEGUIDORES E LIKES
+   ========================= */
+
+let isFollowing = false;
+let isLiked = false;
+
+let followers = 543;
+let likes = 342;
+
+
+function toggleFollow() {
+
+  const btn = document.getElementById('followBtn');
+
+  const followerEl = document.getElementById('followersCount');
+
+  isFollowing = !isFollowing;
+
+
+  if (isFollowing) {
+
+    followers += 1;
+
+    btn.textContent = '✓ Seguindo';
+
+    btn.style.background =
+      'linear-gradient(90deg, #001933, #003366, #66aee8)';
+
+    btn.style.color = 'white';
+
+  } else {
+
+    followers -= 1;
+
+    btn.textContent = '➕ Seguir';
+
+    btn.style.background = '';
+
+    btn.style.color = '';
+
+  }
+
+
+  followerEl.textContent =
+    followers >= 1000
+      ? (followers / 1000).toFixed(1) + 'K'
+      : followers;
+
+}
+
+
+function toggleLike() {
+
+  const btn = document.getElementById('likeBtn');
+
+  const likesEl = document.getElementById('likesCount');
+
+  isLiked = !isLiked;
+
+
+  if (isLiked) {
+
+    likes += 1;
+
+    btn.textContent = '❤️ Curtido';
+
+    btn.style.background = '#ff595e';
+
+    btn.style.color = 'white';
+
+  } else {
+
+    likes -= 1;
+
+    btn.textContent = '❤️ Like';
+
+    btn.style.background = '';
+
+    btn.style.color = '';
+
+  }
+
+
+  likesEl.textContent =
+    likes >= 1000
+      ? (likes / 1000).toFixed(1) + 'K'
+      : likes;
+
+}
+
+
+/* =========================
+   MODAL DE PERFIL
+   ========================= */
+
+function openProfileModal() {
+
+  document
+    .getElementById('profileModal')
+    .classList.add('open');
+
+}
+
+
+function closeProfileModal() {
+
+  document
+    .getElementById('profileModal')
+    .classList.remove('open');
+
+}
+
+
+document
+  .getElementById('profileModal')
+  .addEventListener('click', (e) => {
+
+    if (e.target.id === 'profileModal') {
+
+      closeProfileModal();
+
+    }
+
+  });
+
+</script> 
+
+</body> 
 </html>
