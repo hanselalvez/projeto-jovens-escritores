@@ -1,25 +1,23 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Theo M. Noctis — Autor</title>
+  <title>Catálogo</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div id="youtubePlayer"></div>
-
-<button id="musicButton" class="music-button" onclick="toggleMusic()">
-  🎵 Música
-</button>
-
 <div class="rainbow-bar">
-  <div></div><div></div><div></div><div></div>
-  <div></div><div></div><div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
 </div>
 
 <nav>
@@ -32,422 +30,388 @@
     <li><a href="sobre.html">Sobre</a></li>
   </ul>
 
-  <button class="btn" onclick="location.href='login.html'">
-    Login
-  </button>
+  <button class="btn" onclick="irParaLogin()">Login</button>
 </nav>
+
 
 <div class="main">
 
-  <div class="author-profile">
+  <h2>Nosso Catálogo</h2>
 
-    <div class="author-profile-content">
-
-      <div class="profile-avatar" onclick="openProfileModal()">
-        <img
-          src="https://i.pinimg.com/236x/82/bb/26/82bb2632203788365a71041a2068b454.jpg"
-          alt="Foto de Theo M. Noctis"
-        >
-      </div>
-
-      <div>
-
-        <h2>Theo M. Noctis</h2>
-
-        <div class="bio">
-          Eu sou Levi de Queiroz, mas por aqui talvez seja mais fácil me encontrar
-          como Theo M. Noctis.
-
-          Gosto de escrever sobre aquilo que ninguém consegue dizer em voz alta:
-          noites longas, pensamentos demais, despedidas e sentimentos que insistem
-          em permanecer.
-
-          Se você gosta de histórias melancólicas, provavelmente vai se sentir
-          estranhamente em casa por aqui.
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="author-actions">
-
-      <button
-        id="followBtn"
-        class="btn btn-action"
-        onclick="toggleFollow()"
-      >
-        ➕ Seguir
-      </button>
-
-      <button
-        id="likeBtn"
-        class="btn btn-action"
-        onclick="toggleLike()"
-      >
-        🖤 Like
-      </button>
-
-    </div>
-
-  </div>
+  <p>
+    Explore uma coleção de livros incríveis que nossos alunos fizeram.
+  </p>
 
 
-  <div class="stats-container">
-
-    <div class="stat-box">
-      <div class="stat-number" id="followersCount">287</div>
-      <div class="stat-label">Seguidores</div>
-    </div>
-
-    <div class="stat-box">
-      <div class="stat-number">2</div>
-      <div class="stat-label">Publicações</div>
-    </div>
-
-    <div class="stat-box">
-      <div class="stat-number" id="likesCount">194</div>
-      <div class="stat-label">Likes</div>
-    </div>
-
-  </div>
+  <div class="catalogo-grid">
 
 
-  <div class="tabs">
-
-    <button
-      class="tab-btn active"
-      onclick="switchTab(event, 'publications')"
+    <a
+      href="livro1.html"
+      class="livro-card"
+      data-titulo="O Gatinho Solitário"
+      data-autor="L. Aurora"
     >
-      Publicações
-    </button>
 
-    <button
-      class="tab-btn"
-      onclick="switchTab(event, 'comments')"
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFSXflDyHPEwKYjMPqcvm5d85z8UeeP2V-Tw&s"
+        alt="Capa de O Gatinho Solitário"
+      >
+
+      <p>O Gatinho Solitário</p>
+
+      <span class="autor-card">
+        por L. Aurora
+      </span>
+
+      <span class="status-card">
+        capítulos: 6
+      </span>
+
+    </a>
+
+
+    <a
+      href="erro.html"
+      class="livro-card"
+      data-titulo="Jardim Incolor"
+      data-autor="Theo M. Noctis"
     >
-      Comentários
-    </button>
+
+      <img
+        src="https://uploads.spiritfanfiction.com/historias/capas/201802/jardim-sem-cor-11978335-060220180744.jpg"
+        alt="Capa de Jardim Incolor"
+      >
+
+      <p>Jardim Incolor</p>
+
+      <span class="autor-card">
+        por Theo M. Noctis
+      </span>
+
+      <span class="status-card">
+        capítulos: 9
+      </span>
+
+    </a>
+
+
+    <a
+      href="erro.html"
+      class="livro-card"
+      data-titulo="A Marionete que Sussurra ao Relógio"
+      data-autor="C. Seren"
+    >
+
+      <img
+        src="https://i.pinimg.com/736x/2b/86/1a/2b861af17296101241bf373e934f32f5.jpg"
+        alt="Capa de A Marionete que Sussurra ao Relógio"
+      >
+
+      <p>A Marionete que Sussurra ao Relógio</p>
+
+      <span class="autor-card">
+        por C. Seren
+      </span>
+
+      <span class="status-card">
+        capítulos: 2
+      </span>
+
+    </a>
+
+
+    <a
+      href="livro4.html"
+      class="livro-card"
+      data-titulo="Cartas Nunca Enviadas"
+      data-autor="L. Aurora"
+    >
+
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9mSVf3PajWOQVnDIV6OJNi-Z8R6UTqg4d-sZCdcrOU3a8TjwBPiMAEvDM&s=10"
+        alt="Capa de Cartas Nunca Enviadas"
+      >
+
+      <p>Cartas Nunca Enviadas</p>
+
+      <span class="autor-card">
+        por L. Aurora
+      </span>
+
+      <span class="status-card">
+        capítulos: 5
+      </span>
+
+    </a>
+
+
+    <a
+      href="erro.html"
+      class="livro-card"
+      data-titulo="O Bosque das Palavras"
+      data-autor="L. Aurora"
+    >
+
+      <img
+        src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=700&q=80"
+        alt="Capa de O Bosque das Palavras"
+      >
+
+      <p>O Bosque das Palavras</p>
+
+      <span class="autor-card">
+        por L. Aurora
+      </span>
+
+      <span class="status-card">
+        capítulos: 4
+      </span>
+
+    </a>
+
+
+    <a
+      href="erro.html"
+      class="livro-card"
+      data-titulo="Entre Estrelas"
+      data-autor="L. Aurora"
+    >
+
+      <img
+        src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=700&q=80"
+        alt="Capa de Entre Estrelas"
+      >
+
+      <p>Entre Estrelas</p>
+
+      <span class="autor-card">
+        por L. Aurora
+      </span>
+
+      <span class="status-card">
+        capítulos: 7
+      </span>
+
+    </a>
+
+
+    <a
+      href="erro.html"
+      class="livro-card"
+      data-titulo="O Vento"
+      data-autor="C. Seren"
+    >
+
+      <img
+        src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=700&q=80"
+        alt="Capa de O Vento"
+      >
+
+      <p>O Vento</p>
+
+      <span class="autor-card">
+        por C. Seren
+      </span>
+
+      <span class="status-card">
+        capítulos: 3
+      </span>
+
+    </a>
+
+
+    <a
+      href="erro.html"
+      class="livro-card"
+      data-titulo="Curta Noites"
+      data-autor="Theo M. Noctis"
+    >
+
+      <img
+        src="https://static.vecteezy.com/ti/fotos-gratis/t2/32489511-noite-sombrio-ceu-com-cheio-lua-e-galhos-arvore-galhos-dentro-a-luar-em-uma-sombrio-fundo-generativo-ai-foto.jpg"
+        alt="Capa de Curta Noites"
+      >
+
+      <p>Curta Noites</p>
+
+      <span class="autor-card">
+        por Theo M. Noctis
+      </span>
+
+      <span class="status-card">
+        capítulos: 6
+      </span>
+
+    </a>
+
+
+    <a
+      href="erro.html"
+      class="livro-card"
+      data-titulo="Caminho das Estrelas"
+      data-autor="C. Seren"
+    >
+
+      <img
+        src="https://i.pinimg.com/736x/99/0b/e2/990be202e6c7182ab36fd96645fbf574.jpg"
+        alt="Capa de Caminho das Estrelas"
+      >
+
+      <p>Caminho das Estrelas</p>
+
+      <span class="autor-card">
+        por C. Seren
+      </span>
+
+      <span class="status-card">
+        capítulos: 8
+      </span>
+
+    </a>
+
+
+    <a
+      href="erro.html"
+      class="livro-card"
+      data-titulo="Cartas Para Ninguém"
+      data-autor="Theo M. Noctis"
+    >
+
+      <img
+        src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=700&q=80"
+        alt="Capa de Cartas Para Ninguém"
+      >
+
+      <p>Cartas Para Ninguém</p>
+
+      <span class="autor-card">
+        por Theo M. Noctis
+      </span>
+
+      <span class="status-card">
+        capítulos: 5
+      </span>
+
+    </a>
+
+
+    <a
+      href="erro.html"
+      class="livro-card"
+      data-titulo="Quando a Noite Responde"
+      data-autor="Theo M. Noctis"
+    >
+
+      <img
+        src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=700&q=80"
+        alt="Capa de Quando a Noite Responde"
+      >
+
+      <p>Quando a Noite Responde</p>
+
+      <span class="autor-card">
+        por Theo M. Noctis
+      </span>
+
+      <span class="status-card">
+        capítulos: 7
+      </span>
+
+    </a>
+
+
+    <a
+      href="erro.html"
+      class="livro-card"
+      data-titulo="Entre Cores e Estrelas"
+      data-autor="C. Seren"
+    >
+
+      <img
+        src="https://i.pinimg.com/originals/70/fb/bb/70fbbbc208b9100a9898f03f7cee73c3.jpg"
+        alt="Capa de Entre Cores e Estrelas"
+      >
+
+      <p>Entre Cores e Estrelas</p>
+
+      <span class="autor-card">
+        por C. Seren
+      </span>
+
+      <span class="status-card">
+        capítulos: 6
+      </span>
+
+    </a>
+
+
+    <a
+      href="erro.html"
+      class="livro-card"
+      data-titulo="O Lugar Onde as Flores Sorriem"
+      data-autor="C. Seren"
+    >
+
+      <img
+        src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=700&q=80"
+        alt="Capa de O Lugar Onde as Flores Sorriem"
+      >
+
+      <p>O Lugar Onde as Flores Sorriem</p>
+
+      <span class="autor-card">
+        por C. Seren
+      </span>
+
+      <span class="status-card">
+        capítulos: 4
+      </span>
+
+    </a>
+
 
   </div>
-
-
-  <div id="publications" class="tab-content active">
-
-    <div class="publication">
-
-      <h4>Cartas Para Ninguém</h4>
-
-      <p>
-        <strong>Ano:</strong> 2025
-      </p>
-
-      <p>
-        <strong>Sinopse:</strong>
-        Cartas escritas durante noites em que dormir parecia impossível.
-        Cada página guarda uma tentativa de transformar saudade, solidão
-        e sentimentos não resolvidos em palavras.
-      </p>
-
-      <p>
-        <strong>Gênero:</strong> Drama, Romance, Poesia
-      </p>
-
-      <a href="erro.html" class="btn btn-link">
-        Ver livro
-      </a>
-
-    </div>
-
-
-    <div class="publication">
-
-      <h4>Quando a Noite Responde</h4>
-
-      <p>
-        <strong>Ano:</strong> 2025
-      </p>
-
-      <p>
-        <strong>Sinopse:</strong>
-        Um jovem acostumado ao silêncio começa a perceber que suas noites
-        talvez não sejam tão vazias quanto imaginava. Entre pensamentos,
-        memórias e pequenas descobertas, ele aprende que nem toda tristeza
-        precisa terminar em despedida.
-      </p>
-
-      <p>
-        <strong>Gênero:</strong> Drama, Ficção, Romance
-      </p>
-
-      <a href="erro.html" class="btn btn-link">
-        Ver livro
-      </a>
-
-    </div>
-
-  </div>
-
-
-  <div id="comments" class="tab-content">
-
-    <div class="comment-form">
-
-      <textarea
-        id="commentInput"
-        placeholder="Deixe seu comentário..."
-        rows="4"
-      ></textarea>
-
-      <button class="btn" onclick="addComment()">
-        Enviar comentário
-      </button>
-
-    </div>
-
-    <div id="commentsContainer"></div>
-
-  </div>
-
-
-  <a href="autores.html" class="btn btn-back">
-    Voltar aos autores
-  </a>
 
 </div>
 
 
-<div id="profileModal" class="modal-profile">
+<footer>
 
-  <div class="modal-profile-content">
+  <div class="footer-content">
 
-    <button
-      class="close-modal"
-      onclick="closeProfileModal()"
-    >
-      ×
-    </button>
+    <div>
+      <strong>Jovens Escritores IFRN</strong>
 
-    <img
-      src="https://i.pinimg.com/236x/82/bb/26/82bb2632203788365a71041a2068b454.jpg"
-      alt="Foto de Theo M. Noctis"
-    >
+      <p>
+        Plataforma de leitura e escrita colaborativa.
+      </p>
+    </div>
+
+    <div class="footer-copy">
+
+      &copy; 2025 IFRN •
+
+      <a href="sobre.html">
+        Sobre
+      </a>
+
+    </div>
 
   </div>
 
-</div>
+</footer>
 
-
-<script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
 
-let player;
-
-function onYouTubeIframeAPIReady() {
-
-  player = new YT.Player('youtubePlayer', {
-
-    height: '0',
-    width: '0',
-
-    videoId: 'lSR_nGfhhrY',
-
-playerVars: {
-  autoplay: 0,
-  loop: 1,
-  playlist: 'lSR_nGfhhrY'
+function irParaLogin() {
+  window.location.href = "login.html";
 }
-
-  });
-
-}
-
-
-function toggleMusic() {
-
-  const button =
-    document.getElementById('musicButton');
-
-  if (!player) return;
-
-  const state =
-    player.getPlayerState();
-
-  if (state === YT.PlayerState.PLAYING) {
-
-    player.pauseVideo();
-    button.textContent = "🔇 Música";
-
-  } else {
-
-    player.playVideo();
-    button.textContent = "🔊 Música";
-
-  }
-
-}
-
-
-function switchTab(event, tabName) {
-
-  document
-    .querySelectorAll('.tab-btn')
-    .forEach(tab =>
-      tab.classList.remove('active')
-    );
-
-  document
-    .querySelectorAll('.tab-content')
-    .forEach(content =>
-      content.classList.remove('active')
-    );
-
-  event.target.classList.add('active');
-
-  document
-    .getElementById(tabName)
-    .classList.add('active');
-
-}
-
-
-function addComment() {
-
-  const input =
-    document.getElementById('commentInput');
-
-  const text =
-    input.value.trim();
-
-  if (!text) {
-
-    alert('Escreva um comentário antes de enviar!');
-    return;
-
-  }
-
-  const container =
-    document.getElementById('commentsContainer');
-
-  const comment =
-    document.createElement('div');
-
-  comment.className = 'comment';
-
-  comment.innerHTML = `
-    <div class="comment-author">
-      Usuário Anônimo
-    </div>
-
-    <div class="comment-text">
-      "${text}"
-    </div>
-  `;
-
-  container.insertBefore(
-    comment,
-    container.firstChild
-  );
-
-  input.value = '';
-
-}
-
-
-let isFollowing = false;
-let isLiked = false;
-
-let followers = 287;
-let likes = 194;
-
-
-function toggleFollow() {
-
-  const btn =
-    document.getElementById('followBtn');
-
-  const count =
-    document.getElementById('followersCount');
-
-  isFollowing = !isFollowing;
-
-  if (isFollowing) {
-
-    followers++;
-    btn.textContent = '✓ Seguindo';
-
-  } else {
-
-    followers--;
-    btn.textContent = '➕ Seguir';
-
-  }
-
-  count.textContent = followers;
-
-}
-
-
-function toggleLike() {
-
-  const btn =
-    document.getElementById('likeBtn');
-
-  const count =
-    document.getElementById('likesCount');
-
-  isLiked = !isLiked;
-
-  if (isLiked) {
-
-    likes++;
-    btn.textContent = '🖤 Curtido';
-    btn.style.background = '#555';
-
-  } else {
-
-    likes--;
-    btn.textContent = '🖤 Like';
-    btn.style.background = '';
-
-  }
-
-  count.textContent = likes;
-
-}
-
-
-function openProfileModal() {
-
-  document
-    .getElementById('profileModal')
-    .classList.add('open');
-
-}
-
-
-function closeProfileModal() {
-
-  document
-    .getElementById('profileModal')
-    .classList.remove('open');
-
-}
-
-
-document
-  .getElementById('profileModal')
-  .addEventListener('click', event => {
-
-    if (event.target.id === 'profileModal') {
-      closeProfileModal();
-    }
-
-  });
 
 </script>
 
 </body>
+</html>
 </html>
 ```
