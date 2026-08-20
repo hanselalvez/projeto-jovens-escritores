@@ -1,155 +1,910 @@
+```html
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
-  <title>Publicar História</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Fonte -->
-  <link href="https://fonts.googleapis.com/css2?family=Gagalin&display=swap" rel="stylesheet">
-  <!-- Seu CSS -->
+  <title>Escrever - Jovens Escritores IFRN</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    .writer-container {
+      width: 100%;
+      max-width: 850px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #e8f0ff;
+      border-radius: 12px;
+      color: #001933;
+      box-shadow: 0 6px 20px #0003;
+    }
+
+    .writer-header {
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .writer-header h2 {
+      margin-bottom: 8px;
+    }
+
+    .writer-header p {
+      color: #003366;
+    }
+
+    .writer-section {
+      margin-top: 24px;
+      padding: 18px;
+      border-radius: 10px;
+      background: #f5f9ff;
+    }
+
+    .writer-section h3 {
+      margin-bottom: 15px;
+      color: #001933;
+    }
+
+    .writer-section textarea {
+      width: 100%;
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .writer-section select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #4a688a;
+      border-radius: 6px;
+      background: #dbe7fa;
+      color: #001933;
+    }
+
+    .editor-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .editor-toolbar button {
+      margin-top: 0;
+      padding: 8px 12px;
+    }
+
+    .editor {
+      min-height: 300px;
+      padding: 16px;
+      border: 1px solid #4a688a;
+      border-radius: 6px;
+      background: #dbe7fa;
+      color: #001933;
+      line-height: 1.6;
+      outline: none;
+    }
+
+    .editor:focus {
+      border-color: #1982c4;
+      box-shadow: 0 0 0 2px #1982c433;
+    }
+
+    .chapter {
+      margin-top: 15px;
+      padding: 16px;
+      border-radius: 8px;
+      background: white;
+      box-shadow: 0 2px 8px #0002;
+    }
+
+    .chapter-title {
+      font-weight: bold;
+    }
+
+    .chapter-editor {
+      min-height: 180px;
+      margin-top: 8px;
+      padding: 12px;
+      border: 1px solid #4a688a;
+      border-radius: 6px;
+      background: #dbe7fa;
+      color: #001933;
+      outline: none;
+    }
+
+    .writer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .writer-actions button {
+      margin-top: 0;
+    }
+
+    .preview {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      background: white;
+      box-shadow: 0 2px 8px #0002;
+    }
+
+    .preview.open {
+      display: block;
+    }
+
+    .preview h3 {
+      margin-bottom: 8px;
+    }
+
+    .preview-author {
+      margin-bottom: 15px;
+      color: #1982c4;
+      font-weight: bold;
+    }
+
+    .cover-preview {
+      display: none;
+      width: 150px;
+      height: 210px;
+      margin: 10px auto 20px;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px #0003;
+    }
+
+    .chapter-list {
+      margin-top: 10px;
+    }
+
+    .remove-chapter {
+      background: #ff595e;
+    }
+
+    .remove-chapter:hover {
+      background: #d9363e;
+    }
+
+    @media (max-width: 600px) {
+      .writer-container {
+        width: 94%;
+        padding: 18px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
 <nav>
-  <h1>Escritores IFRN</h1>
+
+  <h1>
+    Jovens escritores IFRN
+  </h1>
+
   <ul>
-    <li><a href="inicio.html">Início</a></li>
-    <li><a href="catalogo.html">Catálogo</a></li>
-    <li><a href="autores.html">Autores</a></li>
+
+    <li>
+      <a href="menu.html">
+        Início
+      </a>
+    </li>
+
+    <li>
+      <a href="catalogo.html">
+        Catálogo
+      </a>
+    </li>
+
+    <li>
+      <a href="autores.html">
+        Autores
+      </a>
+    </li>
+
+    <li>
+      <a href="sobre.html">
+        Sobre
+      </a>
+    </li>
+
   </ul>
-  <ul>
-    <li class="btn"><a href="#">Login</a></li>
-  </ul>
+
+  <button
+    class="btn"
+    onclick="window.location.href='login.html'"
+  >
+    Login
+  </button>
+
 </nav>
 
+
 <section class="main">
-  <div class="login-container" style="max-width: 800px;">
-    <h2>Publicar História</h2>
 
-    <form onsubmit="handleSubmit(event)">
+  <div class="writer-container">
 
-      <label>Título</label>
-      <input required>
+    <div class="writer-header">
 
-      <label>Autor</label>
-      <input required>
+      <h2>
+        ✍️ Escreva sua história
+      </h2>
 
-      <label>Status da Obra</label>
-      <select id="status" onchange="toggleChapters()" required>
-        <option value="">Selecione</option>
-        <option value="one">One-shot</option>
-        <option value="multi">Em andamento / Concluída</option>
-      </select>
+      <p>
+        Transforme suas ideias em páginas.
+      </p>
 
-      <label>Gêneros</label>
-      <select multiple>
-        <option>Fantasia</option>
-        <option>Aventura</option>
-        <option>Drama</option>
-        <option>Romance</option>
-        <option>Terror</option>
-        <option>Suspense</option>
-        <option>Ficção Científica</option>
-      </select>
+    </div>
 
-      <label>Tags</label>
-      <input placeholder="ex: magia, caos, lgbtqia+, deuses">
 
-      <label>Sinopse</label>
-      <textarea maxlength="500"></textarea>
+    <form onsubmit="publicarHistoria(event)">
 
-      <!-- EDITOR -->
-      <label>Texto</label>
 
-      <div class="flex-wrap" style="margin-bottom: 8px;">
-        <button type="button" class="btn-action" onclick="formatText('bold')">Negrito</button>
+      <div class="writer-section">
+
+        <h3>
+          📖 Informações da obra
+        </h3>
+
+
+        <label for="titulo">
+          Título
+        </label>
+
+        <input
+          id="titulo"
+          type="text"
+          required
+          placeholder="Ex: O Reino das Estrelas"
+        >
+
+
+        <label for="autor">
+          Autor / Pseudônimo
+        </label>
+
+        <input
+          id="autor"
+          type="text"
+          required
+          placeholder="Como seu nome aparecerá?"
+        >
+
+
+        <label for="capa">
+          Capa da obra
+        </label>
+
+        <input
+          id="capa"
+          type="url"
+          placeholder="Cole aqui o link da imagem da capa"
+          oninput="mostrarCapa()"
+        >
+
+        <img
+          id="coverPreview"
+          class="cover-preview"
+          alt="Prévia da capa"
+        >
+
+
+        <label for="status">
+          Status da obra
+        </label>
+
+        <select
+          id="status"
+          required
+          onchange="alterarModoEscrita()"
+        >
+
+          <option value="">
+            Selecione
+          </option>
+
+          <option value="one">
+            One-shot
+          </option>
+
+          <option value="multi">
+            Em andamento
+          </option>
+
+          <option value="finished">
+            Concluída
+          </option>
+
+        </select>
+
+
+        <label for="genero">
+          Gênero
+        </label>
+
+        <select id="genero" required>
+
+          <option value="">
+            Selecione um gênero
+          </option>
+
+          <option>
+            Fantasia
+          </option>
+
+          <option>
+            Aventura
+          </option>
+
+          <option>
+            Drama
+          </option>
+
+          <option>
+            Romance
+          </option>
+
+          <option>
+            Terror
+          </option>
+
+          <option>
+            Suspense
+          </option>
+
+          <option>
+            Ficção Científica
+          </option>
+
+          <option>
+            Poesia
+          </option>
+
+          <option>
+            LGBT
+          </option>
+
+        </select>
+
+
+        <label for="tags">
+          Tags
+        </label>
+
+        <input
+          id="tags"
+          type="text"
+          placeholder="Ex: magia, amizade, aventura"
+        >
+
       </div>
 
-      <div id="editor"
-           contenteditable="true"
-           style="
-             min-height: 200px;
-             background: #dbe7fa;
-             border-radius: 6px;
-             padding: 12px;
-             color: #001933;
-           ">
+
+      <div class="writer-section">
+
+        <h3>
+          📝 Sinopse
+        </h3>
+
+        <label for="sinopse">
+          Conte um pouco sobre sua história
+        </label>
+
+        <textarea
+          id="sinopse"
+          maxlength="500"
+          required
+          placeholder="Escreva uma breve apresentação da sua obra..."
+        ></textarea>
+
+        <small>
+          Máximo de 500 caracteres.
+        </small>
+
       </div>
 
-      <!-- CAPÍTULOS -->
-      <div id="chapters" style="display:none; margin-top: 20px;">
 
-        <h3>Capítulos</h3>
+      <div
+        id="singleStory"
+        class="writer-section"
+      >
+
+        <h3>
+          ✒️ Texto
+        </h3>
+
+        <div class="editor-toolbar">
+
+          <button
+            type="button"
+            onclick="formatar('bold')"
+          >
+            Negrito
+          </button>
+
+          <button
+            type="button"
+            onclick="formatar('italic')"
+          >
+            Itálico
+          </button>
+
+          <button
+            type="button"
+            onclick="formatar('underline')"
+          >
+            Sublinhado
+          </button>
+
+        </div>
+
+
+        <div
+          id="editor"
+          class="editor"
+          contenteditable="true"
+        ></div>
+
+      </div>
+
+
+      <div
+        id="chapterSection"
+        class="writer-section"
+        style="display:none;"
+      >
+
+        <h3>
+          📚 Capítulos
+        </h3>
 
         <div id="chaptersContainer"></div>
 
-        <button type="button" class="btn-action" onclick="addChapter()">
-          + Adicionar Capítulo
+        <button
+          type="button"
+          onclick="adicionarCapitulo()"
+        >
+          + Adicionar capítulo
         </button>
+
       </div>
 
-      <button type="submit">Publicar</button>
+
+      <div class="writer-actions">
+
+        <button
+          type="button"
+          class="btn"
+          onclick="mostrarPrevia()"
+        >
+          👀 Ver prévia
+        </button>
+
+        <button
+          type="submit"
+          class="btn btn-enviar"
+        >
+          🚀 Publicar história
+        </button>
+
+        <button
+          type="button"
+          class="btn"
+          onclick="window.location.href='catalogo.html'"
+        >
+          ← Voltar
+        </button>
+
+      </div>
+
     </form>
+
+
+    <div
+      id="preview"
+      class="preview"
+    >
+
+      <h3 id="previewTitle"></h3>
+
+      <div
+        id="previewAuthor"
+        class="preview-author"
+      ></div>
+
+      <img
+        id="previewCover"
+        class="cover-preview"
+        alt="Capa da obra"
+      >
+
+      <p id="previewSynopsis"></p>
+
+      <p id="previewGenre"></p>
+
+    </div>
+
   </div>
+
 </section>
 
+
+<footer>
+
+  <div class="footer-content">
+
+    <div>
+
+      <strong>
+        Jovens Escritores IFRN
+      </strong>
+
+      <p>
+        Plataforma de leitura e escrita colaborativa.
+      </p>
+
+    </div>
+
+    <div class="footer-copy">
+
+      &copy; 2025 IFRN •
+
+      <a href="sobre.html">
+        Sobre
+      </a>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
 <script>
-  function formatText(command) {
-    document.execCommand(command, false, null);
+
+  const nomeUsuario =
+    localStorage.getItem("nomeUsuario") || "";
+
+  const pseudonimoUsuario =
+    localStorage.getItem("pseudonimoUsuario") || "";
+
+
+  window.addEventListener("DOMContentLoaded", () => {
+
+    const autor =
+      document.getElementById("autor");
+
+    autor.value =
+      pseudonimoUsuario || nomeUsuario;
+
+  });
+
+
+  function formatar(comando) {
+
+    document.execCommand(
+      comando,
+      false,
+      null
+    );
+
   }
 
-  function toggleChapters() {
-    const status = document.getElementById('status').value;
-    const chapters = document.getElementById('chapters');
-    const editor = document.getElementById('editor');
 
-    if (status === 'multi') {
-      chapters.style.display = 'block';
-      editor.style.display = 'none';
+  function alterarModoEscrita() {
+
+    const status =
+      document.getElementById("status").value;
+
+    const texto =
+      document.getElementById("singleStory");
+
+    const capitulos =
+      document.getElementById("chapterSection");
+
+
+    if (status === "multi" || status === "finished") {
+
+      texto.style.display = "none";
+      capitulos.style.display = "block";
+
+      if (
+        document.getElementById("chaptersContainer")
+          .children.length === 0
+      ) {
+
+        adicionarCapitulo();
+
+      }
+
     } else {
-      chapters.style.display = 'none';
-      editor.style.display = 'block';
+
+      texto.style.display = "block";
+      capitulos.style.display = "none";
+
     }
+
   }
 
-  function addChapter() {
-    const container = document.getElementById('chaptersContainer');
-    const index = container.children.length + 1;
 
-    const chapter = document.createElement('div');
-    chapter.className = 'publication';
+  function adicionarCapitulo() {
+
+    const container =
+      document.getElementById("chaptersContainer");
+
+    const numero =
+      container.children.length + 1;
+
+
+    const chapter =
+      document.createElement("div");
+
+    chapter.className =
+      "chapter";
+
 
     chapter.innerHTML = `
-      <label>Capítulo ${index} – Título</label>
-      <input>
 
-      <div class="flex-wrap" style="margin: 6px 0;">
-        <button type="button" class="btn-action" onclick="formatText('bold')">
+      <label>
+        Capítulo ${numero}
+      </label>
+
+      <input
+        type="text"
+        class="chapter-title"
+        placeholder="Título do capítulo"
+        required
+      >
+
+      <div class="editor-toolbar">
+
+        <button
+          type="button"
+          onclick="formatarCapitulo(this, 'bold')"
+        >
           Negrito
         </button>
+
+        <button
+          type="button"
+          onclick="formatarCapitulo(this, 'italic')"
+        >
+          Itálico
+        </button>
+
       </div>
 
-      <div contenteditable="true"
-           style="
-             min-height: 150px;
-             background: #dbe7fa;
-             border-radius: 6px;
-             padding: 10px;
-             color: #001933;
-           ">
-      </div>
+      <div
+        class="chapter-editor"
+        contenteditable="true"
+      ></div>
+
+      <button
+        type="button"
+        class="remove-chapter"
+        onclick="removerCapitulo(this)"
+      >
+        Remover capítulo
+      </button>
+
     `;
 
+
     container.appendChild(chapter);
+
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    alert("História enviada. Agora ela entra no limbo da revisão.");
+
+  function removerCapitulo(botao) {
+
+    botao
+      .closest(".chapter")
+      .remove();
+
+    atualizarNumeracao();
+
   }
+
+
+  function atualizarNumeracao() {
+
+    const capitulos =
+      document.querySelectorAll(".chapter");
+
+
+    capitulos.forEach(
+      (capitulo, index) => {
+
+        const label =
+          capitulo.querySelector("label");
+
+        label.textContent =
+          "Capítulo " + (index + 1);
+
+      }
+    );
+
+  }
+
+
+  function formatarCapitulo(botao, comando) {
+
+    const editor =
+      botao
+        .closest(".chapter")
+        .querySelector(".chapter-editor");
+
+    editor.focus();
+
+    document.execCommand(
+      comando,
+      false,
+      null
+    );
+
+  }
+
+
+  function mostrarCapa() {
+
+    const url =
+      document.getElementById("capa").value.trim();
+
+    const imagem =
+      document.getElementById("coverPreview");
+
+
+    if (!url) {
+
+      imagem.style.display = "none";
+      return;
+
+    }
+
+
+    imagem.src = url;
+    imagem.style.display = "block";
+
+
+    imagem.onerror = () => {
+      imagem.style.display = "none";
+    };
+
+  }
+
+
+  function mostrarPrevia() {
+
+    const titulo =
+      document.getElementById("titulo").value;
+
+    const autor =
+      document.getElementById("autor").value;
+
+    const sinopse =
+      document.getElementById("sinopse").value;
+
+    const genero =
+      document.getElementById("genero").value;
+
+    const capa =
+      document.getElementById("capa").value;
+
+
+    document.getElementById("previewTitle")
+      .textContent = titulo || "Sem título";
+
+    document.getElementById("previewAuthor")
+      .textContent =
+      autor
+        ? "por " + autor
+        : "Autor não informado";
+
+    document.getElementById("previewSynopsis")
+      .textContent =
+      sinopse || "Sem sinopse.";
+
+    document.getElementById("previewGenre")
+      .textContent =
+      genero
+        ? "Gênero: " + genero
+        : "";
+
+
+    const previewCover =
+      document.getElementById("previewCover");
+
+
+    if (capa) {
+
+      previewCover.src = capa;
+      previewCover.style.display = "block";
+
+    } else {
+
+      previewCover.style.display = "none";
+
+    }
+
+
+    document
+      .getElementById("preview")
+      .classList.add("open");
+
+  }
+
+
+  function publicarHistoria(event) {
+
+    event.preventDefault();
+
+
+    const titulo =
+      document.getElementById("titulo").value.trim();
+
+    const autor =
+      document.getElementById("autor").value.trim();
+
+
+    if (!titulo || !autor) {
+
+      alert(
+        "Preencha pelo menos o título e o autor da obra."
+      );
+
+      return;
+
+    }
+
+
+    const historia = {
+
+      titulo: titulo,
+
+      autor: autor,
+
+      capa:
+        document.getElementById("capa").value.trim(),
+
+      status:
+        document.getElementById("status").value,
+
+      genero:
+        document.getElementById("genero").value,
+
+      tags:
+        document.getElementById("tags").value.trim(),
+
+      sinopse:
+        document.getElementById("sinopse").value.trim(),
+
+      data:
+        new Date().toLocaleDateString("pt-BR")
+
+    };
+
+
+    localStorage.setItem(
+      "ultimaHistoria",
+      JSON.stringify(historia)
+    );
+
+
+    alert(
+      "História enviada com sucesso! 📚\n\nEla ficará aguardando revisão antes de aparecer no catálogo."
+    );
+
+
+    window.location.href =
+      "menu.html";
+
+  }
+
 </script>
 
 </body>
 </html>
+```
