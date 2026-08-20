@@ -1,10 +1,92 @@
+```html
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Biblioteca</title>
+  <title>Login - Jovens Escritores IFRN</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    .login-container {
+      max-width: 430px;
+    }
+
+    .login-choice {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .login-choice h3 {
+      margin-bottom: 8px;
+      color: #001933;
+    }
+
+    .login-choice p {
+      margin-bottom: 18px;
+      color: #003366;
+    }
+
+    .choice-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .choice-button {
+      padding: 18px 12px;
+      border: 0;
+      border-radius: 10px;
+      background: #dbe7fa;
+      color: #001933;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .choice-button:hover {
+      transform: translateY(-4px);
+      background: #c7dcf7;
+      box-shadow: 0 6px 16px #0002;
+    }
+
+    .choice-icon {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 30px;
+    }
+
+    .choice-title {
+      display: block;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .choice-description {
+      display: block;
+      margin-top: 5px;
+      color: #003366;
+      font-size: 12px;
+    }
+
+    .user-welcome {
+      margin-bottom: 18px;
+      color: #003366;
+      font-size: 14px;
+    }
+
+    .back-login {
+      margin-top: 12px;
+      background: transparent;
+      color: #003366;
+    }
+
+    @media (max-width: 500px) {
+      .choice-buttons {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -12,41 +94,230 @@
   <div class="rainbow-bar"></div>
 
   <div class="login-container">
-    <h2>Login</h2>
-    <p>Preencha suas informações para entrar</p>
 
-    <form onsubmit="return redirecionarUsuario();">
+    <div id="loginForm">
 
-      <label for="username">Nome</label>
-      <input type="text" id="username" name="username" required placeholder="Digite seu nome">
+      <h2>Entrar</h2>
 
-      <label for="pseudo">Pseudônimo (opcional)</label>
-      <input type="text" id="pseudo" name="pseudo" placeholder="Digite seu pseudônimo">
+      <p>
+        Entre na comunidade dos Jovens Escritores IFRN.
+      </p>
 
-      <label for="matricula">Matrícula</label>
-      <input type="number" id="matricula" name="matricula" required placeholder="Digite sua matrícula">
+      <form onsubmit="redirecionarUsuario(event)">
 
-      <label for="password">Senha</label>
-      <input type="password" id="password" name="password" required placeholder="Digite sua senha">
+        <label for="username">
+          Nome
+        </label>
 
-      <button type="submit">Entrar</button>
-    </form>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          required
+          placeholder="Digite seu nome"
+        >
+
+
+        <label for="pseudo">
+          Pseudônimo
+        </label>
+
+        <input
+          type="text"
+          id="pseudo"
+          name="pseudo"
+          placeholder="Como quer aparecer como autor?"
+        >
+
+
+        <label for="matricula">
+          Matrícula
+        </label>
+
+        <input
+          type="number"
+          id="matricula"
+          name="matricula"
+          required
+          placeholder="Digite sua matrícula"
+        >
+
+
+        <label for="password">
+          Senha
+        </label>
+
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          placeholder="Digite sua senha"
+        >
+
+
+        <button type="submit">
+          Entrar
+        </button>
+
+      </form>
+
+    </div>
+
+
+    <div id="choiceScreen" class="login-choice">
+
+      <h2>Bem-vindo! ✨</h2>
+
+      <p class="user-welcome" id="welcomeMessage"></p>
+
+      <h3>
+        O que você quer fazer?
+      </h3>
+
+      <p>
+        Escolha como deseja explorar o Jovens Escritores.
+      </p>
+
+
+      <div class="choice-buttons">
+
+        <button
+          type="button"
+          class="choice-button"
+          onclick="irParaLeitura()"
+        >
+
+          <span class="choice-icon">
+            📖
+          </span>
+
+          <span class="choice-title">
+            Quero apenas ler
+          </span>
+
+          <span class="choice-description">
+            Explorar livros e autores
+          </span>
+
+        </button>
+
+
+        <button
+          type="button"
+          class="choice-button"
+          onclick="irParaEscrita()"
+        >
+
+          <span class="choice-icon">
+            ✍️
+          </span>
+
+          <span class="choice-title">
+            Quero escrever
+          </span>
+
+          <span class="choice-description">
+            Criar e publicar minha história
+          </span>
+
+        </button>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="back-login"
+        onclick="voltarLogin()"
+      >
+        ← Voltar
+      </button>
+
+    </div>
+
   </div>
 
 
   <script>
-    function redirecionarUsuario() {
-      const nome = document.getElementById("username").value;
-      const pseudo = document.getElementById("pseudo").value;
 
-      // Salva os dados no localStorage para a próxima página
-      localStorage.setItem("nomeUsuario", nome);
-      localStorage.setItem("pseudonimoUsuario", pseudo);
+    function redirecionarUsuario(event) {
 
-      window.location.href = "bemvindos.html";
-      return false;
+      event.preventDefault();
+
+      const nome =
+        document.getElementById("username").value.trim();
+
+      const pseudo =
+        document.getElementById("pseudo").value.trim();
+
+      const matricula =
+        document.getElementById("matricula").value.trim();
+
+
+      localStorage.setItem(
+        "nomeUsuario",
+        nome
+      );
+
+      localStorage.setItem(
+        "pseudonimoUsuario",
+        pseudo
+      );
+
+      localStorage.setItem(
+        "matriculaUsuario",
+        matricula
+      );
+
+      document.getElementById("loginForm").style.display = "none";
+
+      document.getElementById("choiceScreen").style.display = "block";
+
+
+      const nomeExibicao =
+        pseudo || nome;
+
+      document.getElementById("welcomeMessage").textContent =
+        "Olá, " + nomeExibicao + "! Sua conta está pronta.";
     }
+
+
+    function irParaLeitura() {
+
+      localStorage.setItem(
+        "modoUsuario",
+        "leitor"
+      );
+
+      window.location.href =
+        "catalogo.html";
+    }
+
+
+    function irParaEscrita() {
+
+      localStorage.setItem(
+        "modoUsuario",
+        "escritor"
+      );
+
+      window.location.href =
+        "escrever.html";
+    }
+
+
+    function voltarLogin() {
+
+      document.getElementById("choiceScreen").style.display =
+        "none";
+
+      document.getElementById("loginForm").style.display =
+        "block";
+    }
+
   </script>
 
 </body>
 </html>
+```
