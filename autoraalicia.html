@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -106,7 +105,7 @@
     </div>
 
     <div class="stat-box">
-      <div class="stat-number">2</div>
+      <div class="stat-number">5</div>
       <div class="stat-label">Publicações</div>
     </div>
 
@@ -139,105 +138,122 @@
 
   <div id="publications" class="tab-content active">
 
-    <div class="publication">
+  <div class="publication">
 
-      <h4>Entre Cores e Estrelas</h4>
+    <h4>A Marionete que Sussurra ao Relógio</h4>
 
-      <p>
-        <strong>Ano:</strong> 2025
-      </p>
+    <p><strong>Ano:</strong> 2025</p>
 
-      <p>
-        <strong>Sinopse:</strong>
-        Uma garota descobre que algumas pessoas entram em nossas vidas
-        para ensinar que ser diferente nunca foi algo a esconder.
-        Entre amizades, descobertas e sentimentos inesperados,
-        ela começa a construir seu próprio lugar no mundo.
-      </p>
+    <p>
+      <strong>Sinopse:</strong>
+      Uma marionete misteriosa parece conhecer segredos que ninguém deveria
+      saber. Entre relógios, enigmas e descobertas inesperadas, uma aventura
+      peculiar começa.
+    </p>
 
-      <p>
-        <strong>Gênero:</strong> Romance, LGBT, Drama
-      </p>
+    <p>
+      <strong>Gênero:</strong> Fantasia, Mistério
+    </p>
 
-      <a href="erro.html" class="btn btn-link">
-        Ver livro
-      </a>
-
-    </div>
-
-
-    <div class="publication">
-
-      <h4>O Lugar Onde as Flores Sorriem</h4>
-
-      <p>
-        <strong>Ano:</strong> 2025
-      </p>
-
-      <p>
-        <strong>Sinopse:</strong>
-        Uma história delicada sobre amizade, afeto e a coragem de
-        gostar de quem realmente somos. Em um pequeno jardim cheio
-        de cores, duas garotas descobrem que alguns sentimentos
-        florescem melhor quando deixam de ser escondidos.
-      </p>
-
-      <p>
-        <strong>Gênero:</strong> Romance, LGBT, Slice of Life
-      </p>
-
-      <a href="erro.html" class="btn btn-link">
-        Ver livro
-      </a>
-
-    </div>
+    <a href="erro.html" class="btn btn-link">
+      Ver livro
+    </a>
 
   </div>
 
 
-  <div id="comments" class="tab-content">
+  <div class="publication">
 
-    <div class="comment-form">
+    <h4>O Vento</h4>
 
-      <textarea
-        id="commentInput"
-        placeholder="Deixe seu comentário..."
-        rows="4"
-      ></textarea>
+    <p><strong>Ano:</strong> 2025</p>
 
-      <button class="btn" onclick="addComment()">
-        Enviar comentário
-      </button>
+    <p>
+      <strong>Sinopse:</strong>
+      Um romance juvenil sobre encontros inesperados, sentimentos novos
+      e a coragem necessária para deixar alguém entrar na própria vida.
+    </p>
 
-    </div>
+    <p>
+      <strong>Gênero:</strong> Romance
+    </p>
 
-    <div id="commentsContainer"></div>
+    <a href="erro.html" class="btn btn-link">
+      Ver livro
+    </a>
 
   </div>
 
 
-  <a href="autores.html" class="btn btn-back">
-    Voltar aos autores
-  </a>
+  <div class="publication">
 
-</div>
+    <h4>Caminho das Estrelas</h4>
+
+    <p><strong>Ano:</strong> 2025</p>
+
+    <p>
+      <strong>Sinopse:</strong>
+      Uma aventura fantástica sobre sonhos, amizade e duas pessoas tentando
+      encontrar o caminho certo em meio a um universo cheio de possibilidades.
+    </p>
+
+    <p>
+      <strong>Gênero:</strong> Fantasia, Aventura
+    </p>
+
+    <a href="erro.html" class="btn btn-link">
+      Ver livro
+    </a>
+
+  </div>
 
 
-<div id="profileModal" class="modal-profile">
+  <div class="publication">
 
-  <div class="modal-profile-content">
+    <h4>Entre Cores e Estrelas</h4>
 
-    <button
-      class="close-modal"
-      onclick="closeProfileModal()"
-    >
-      ×
-    </button>
+    <p><strong>Ano:</strong> 2025</p>
 
-    <img
-      src="https://66.media.tumblr.com/1c7227c5224cbebf197860f8e3498a3c/tumblr_inline_p73bvzYyiM1szzy9j_540.png"
-      alt="Foto de C. Seren"
-    >
+    <p>
+      <strong>Sinopse:</strong>
+      Uma garota descobre que algumas pessoas entram em nossas vidas
+      para ensinar que ser diferente nunca foi algo a esconder.
+      Entre amizades, descobertas e sentimentos inesperados,
+      ela começa a construir seu próprio lugar no mundo.
+    </p>
+
+    <p>
+      <strong>Gênero:</strong> Romance, LGBT, Drama
+    </p>
+
+    <a href="erro.html" class="btn btn-link">
+      Ver livro
+    </a>
+
+  </div>
+
+
+  <div class="publication">
+
+    <h4>O Lugar Onde as Flores Sorriem</h4>
+
+    <p><strong>Ano:</strong> 2025</p>
+
+    <p>
+      <strong>Sinopse:</strong>
+      Uma história delicada sobre amizade, afeto e a coragem de
+      gostar de quem realmente somos. Em um pequeno jardim cheio
+      de cores, duas garotas descobrem que alguns sentimentos
+      florescem melhor quando deixam de ser escondidos.
+    </p>
+
+    <p>
+      <strong>Gênero:</strong> Romance, LGBT, Slice of Life
+    </p>
+
+    <a href="erro.html" class="btn btn-link">
+      Ver livro
+    </a>
 
   </div>
 
@@ -251,22 +267,21 @@
 let player;
 
 function onYouTubeIframeAPIReady() {
-
   player = new YT.Player('youtubePlayer', {
-
     height: '0',
     width: '0',
-
     videoId: 'RrO2D_4_KUs',
-
-playerVars: {
-  autoplay: 0,
-  loop: 1,
-  playlist: 'RrO2D_4_KUs'
-}
-
+    playerVars: {
+      autoplay: 1,
+      loop: 1,
+      playlist: 'RrO2D_4_KUs'
+    },
+    events: {
+      onReady: function(event) {
+        event.target.playVideo();
+      }
+    }
   });
-
 }
 
 
