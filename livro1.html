@@ -1,85 +1,197 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Título do Livro 1</title>
-<link rel="stylesheet" href="livro.css">
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>O Gatinho Solitário</title>
+
+  <link rel="stylesheet" href="livro.css">
+
 </head>
+
+
 <body>
 
-<nav>
-  <h1>Leitura</h1>
-  <ul>
-    <li><a href="inicio.html">Início</a></li>
-    <li><a href="catalogo.html">Catálogo</a></li>
-    <li><a href="autores.html">Autores</a></li>
-    <li><a href="sobre.html">Sobre</a></li>
-  </ul>
-</nav>
+  <nav>
 
-<div class="pagina-livro">
+    <h1>
+      Leitura
+    </h1>
 
-  <h2>Título do Livro 1</h2>
-  <h4>por Nome do Autor</h4>
-
-  <!-- CAPA -->
-  <div class="capa-livro">
-    <img src="capa-exemplo.jpg" alt="Capa do livro">
-  </div>
-
-  <!-- GÊNEROS -->
-  <div class="generos">
-    <h3>Gêneros</h3>
     <ul>
-      <li>Fantasia</li>
-      <li>Aventura</li>
-      <li>Drama</li>
-    </ul>
-  </div>
 
-  <!-- SINOPSE -->
-  <div class="sinopse">
-    <h3>Sinopse</h3>
-    <p>
-      Aqui vai a sinopse do livro…
+      <li>
+        <a href="menu.html">
+          Início
+        </a>
+      </li>
+
+      <li>
+        <a href="catalogo.html">
+          Catálogo
+        </a>
+      </li>
+
+      <li>
+        <a href="autores.html">
+          Autores
+        </a>
+      </li>
+
+      <li>
+        <a href="sobre.html">
+          Sobre
+        </a>
+      </li>
+
+    </ul>
+
+  </nav>
+
+
+  <main class="pagina-livro">
+
+    <h2>
+      O Gatinho Solitário
+    </h2>
+
+    <h4>
+      por
+      <a href="autoraurora.html">
+        L. Aurora
+      </a>
+    </h4>
+
+
+    <p class="status">
+      Status: Em andamento
     </p>
-  </div>
 
-  <!-- ÍNDICE -->
-  <div class="indice">
-    <h3>Índice</h3>
-    <ul>
-      <li>
-        <a href="#cap1">1. The Beginning</a>
-        <span class="data">dom, jun 7, 2020</span>
-      </li>
 
-      <li>
-        <a href="#cap2">2. A Man of Wealth and Taste</a>
-        <span class="data">dom, jun 7, 2020</span>
-      </li>
+    <div class="capa-livro">
 
-      <li>
-        <a href="#cap3">3. Welcome to Burlesque</a>
-        <span class="data">dom, jun 7, 2020</span>
-      </li>
-    </ul>
-  </div>
+      <img
+        data-capa="gatinhoSolitario"
+        alt="Capa de O Gatinho Solitário"
+      >
 
-  <!-- CONTEÚDO -->
-  <div class="conteudo-livro">
-    <h3 id="cap1">Capítulo 1</h3>
-    <p>Texto do capítulo 1…</p>
+    </div>
 
-    <h3 id="cap2">Capítulo 2</h3>
-    <p>Texto do capítulo 2…</p>
 
-    <h3 id="cap3">Capítulo 3</h3>
-    <p>Texto do capítulo 3…</p>
-  </div>
+    <div class="generos">
 
-</div>
+      <h3>
+        Gêneros
+      </h3>
 
+      <ul>
+
+        <li>
+          Fantasia
+        </li>
+
+        <li>
+          Aventura
+        </li>
+
+        <li>
+          Drama
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <div class="sinopse">
+
+      <h3>
+        Sinopse
+      </h3>
+
+      <p>
+        Uma aventura fantástica sobre amizade,
+        descoberta e os caminhos inesperados
+        encontrados por um pequeno gatinho.
+      </p>
+
+    </div>
+
+
+    <div class="indice">
+
+      <h3>
+        Índice
+      </h3>
+
+      <ul>
+
+        <li>
+          <a href="#cap1">
+            1. O Gatinho Solitário
+          </a>
+        </li>
+
+        <li>
+          <a href="#cap2">
+            2. Jardim Pálido
+          </a>
+        </li>
+
+        <li>
+          <a href="#cap3">
+            3. Adeus Salgado
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <div class="conteudo-livro">
+
+      <h3 id="cap1">
+        Capítulo 1 — O Gatinho Solitário
+      </h3>
+
+      <p>
+        Aqui começa a história de O Gatinho Solitário.
+      </p>
+
+
+      <h3 id="cap2">
+        Capítulo 2 — Jardim Pálido
+      </h3>
+
+      <p>
+        O gatinho segue seu caminho e encontra
+        novos lugares e novas histórias.
+      </p>
+
+
+      <h3 id="cap3">
+        Capítulo 3 — Adeus Salgado
+      </h3>
+
+      <p>
+        Uma despedida muda o rumo da jornada.
+      </p>
+
+    </div>
+
+  </main>
+
+
+  <script src="capas.js"></script>
+  <script src="tema.js"></script>
 </body>
+
 </html>
